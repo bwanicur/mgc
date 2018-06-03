@@ -6,7 +6,7 @@ class CreateGigMusicianMemberships < ActiveRecord::Migration[5.1]
       t.string :confirmation_token
       t.datetime :confirmed_at
       t.integer :confirmation_status, default: 0
-
+      t.integer :alt_instrument_id
       t.timestamps
     end
   end
