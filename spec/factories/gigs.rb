@@ -1,12 +1,10 @@
 FactoryBot.define do
   factory :gig do
-    user_id 1
-    venue_id 1
+    association :user
+    association :venue 
     is_template false
-    title "MyString"
-    start_time "2018-05-31 19:37:49"
-    end_time "2018-05-31 19:37:49"
-    short_description "MyString"
-    description "MyText"
+    sequence(:title) {|n| "Test Gig #{n}" } 
+    start_time { Time.zone.now.beginning_of_hour } 
+    end_time { Time.zone.now.beginning_of_hour + 3.hours } 
   end
 end

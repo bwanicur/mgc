@@ -1,13 +1,9 @@
 FactoryBot.define do
   factory :venue do
-    name "MyString"
-    address1 "MyString"
-    address1 "MyString"
-    lat "9.99"
-    lng "9.99"
-    city "MyString"
-    state "MyString"
-    zipcode "MyString"
-    description "MyText"
+    sequence(:name) {|n| "Test Venue #{n}" }
+    address1 { Faker::Address.street_address }
+    city { Faker::Address.city } 
+    state { Faker::Address.state_abbr } 
+    zipcode { Faker::Address.zip } 
   end
 end

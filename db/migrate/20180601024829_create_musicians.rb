@@ -3,6 +3,8 @@ class CreateMusicians < ActiveRecord::Migration[5.1]
     create_table :musicians do |t|
       t.integer :user_id, null: false
       t.integer :linked_to_user_id
+      t.integer :linked_to_self_user_id
+      t.integer :instrument_id
       t.string :email, null: false
       t.string :first_name
       t.string :last_name
@@ -18,5 +20,6 @@ class CreateMusicians < ActiveRecord::Migration[5.1]
       t.timestamps
     end
     add_index :musicians, [:user_id, :email], unique: true
+    add_index :musicians, :linked_to_self_user_id
   end
 end

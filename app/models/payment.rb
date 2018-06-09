@@ -4,6 +4,6 @@ class Payment < ApplicationRecord
   belongs_to :user
   belongs_to :gig_musician_membership
   
-  monetize :amount, allow_nil: true
+  monetize :amount_cents, as: "amount", allow_nil: true
 
 end

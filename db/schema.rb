@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20180603160440) do
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.integer "confirmation_status", default: 0
+    t.integer "alt_instrument_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -35,6 +36,7 @@ ActiveRecord::Schema.define(version: 20180603160440) do
     t.string "short_description"
     t.text "description"
     t.string "map_link"
+    t.text "musician_info"
     t.jsonb "optional_data", default: {}
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -43,14 +45,17 @@ ActiveRecord::Schema.define(version: 20180603160440) do
   end
 
   create_table "instruments", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_instruments_on_name", unique: true
   end
 
   create_table "musicians", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "linked_to_user_id"
+    t.integer "linked_to_self_user_id"
+    t.integer "instrument_id"
     t.string "email", null: false
     t.string "first_name"
     t.string "last_name"
@@ -64,14 +69,15 @@ ActiveRecord::Schema.define(version: 20180603160440) do
     t.jsonb "optional_data", default: {}
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["linked_to_self_user_id"], name: "index_musicians_on_linked_to_self_user_id"
     t.index ["user_id", "email"], name: "index_musicians_on_user_id_and_email", unique: true
   end
 
   create_table "payments", force: :cascade do |t|
     t.integer "user_id"
     t.integer "gig_musician_membership_id"
-    t.integer "amount_cents", default: 0, null: false
-    t.string "amount_currency", default: "USD", null: false
+    t.integer "amount_cents_cents", default: 0, null: false
+    t.string "amount_cents_currency", default: "USD", null: false
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "created_at", null: false
@@ -123,7 +129,7 @@ ActiveRecord::Schema.define(version: 20180603160440) do
     t.decimal "lat", precision: 10, scale: 6
     t.decimal "lng", precision: 10, scale: 6
     t.string "city", null: false
-    t.string "state", null: false
+    t.string "state", limit: 2, null: false
     t.string "zipcode", null: false
     t.text "description"
     t.string "phone"
@@ -132,6 +138,9 @@ ActiveRecord::Schema.define(version: 20180603160440) do
     t.jsonb "optional_data", default: {}
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["city"], name: "index_venues_on_city"
+    t.index ["name"], name: "index_venues_on_name"
+    t.index ["state"], name: "index_venues_on_state"
   end
 
 end

@@ -1,16 +1,14 @@
 FactoryBot.define do
   factory :musician do
-    user_id 1
-    linked_to_user_id 1
-    email "MyString"
-    first_name "MyString"
-    last_name "MyString"
-    address1 "MyString"
-    address2 "MyString"
-    city "MyString"
-    state "MyString"
-    zipcode "MyString"
-    phone1 "MyString"
-    phone2 "MyString"
+    association :user  
+    association :instrument, strategy: :build
+    email { Faker::Internet.email } 
+    first_name { Faker::Name.first_name } 
+    last_name { Faker::Name.last_name } 
+    address1 { Faker::Address.street_address } 
+    city { Faker::Address.city } 
+    state { Faker::Address.state } 
+    zipcode { Faker::Address.zip } 
+    phone1 { Faker::PhoneNumber.phone_number }  
   end
 end
