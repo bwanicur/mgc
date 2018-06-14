@@ -5,8 +5,8 @@ class CreateVenues < ActiveRecord::Migration[5.1]
       t.boolean :is_confirmed, default: false
       t.string :address1, null: false
       t.string :address2
-      t.decimal :lat, precision: 10, scale: 6
-      t.decimal :lng, precision: 10, scale: 6
+      t.decimal :latitude
+      t.decimal :longitude
       t.string :city, null: false
       t.string :state, null: false, limit: 2
       t.string :zipcode, null: false

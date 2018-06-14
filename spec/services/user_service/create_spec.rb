@@ -3,7 +3,7 @@ require 'rails_helper'
 describe UserService::Create do
 
   describe '#run' do
-    
+ 
     let(:user_atts) { FactoryBot.attributes_for(:user) }
     let(:service) { described_class.new(user_atts) }
     let(:instrument) { FactoryBot.create(:instrument) }

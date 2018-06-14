@@ -8,6 +8,7 @@ module Backstage
     end
 
     def show
+
       gig = Gig.find(params[:id])
       render json: { gig: hg(gig) }
     end

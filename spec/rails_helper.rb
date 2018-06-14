@@ -26,6 +26,7 @@ require 'capybara/rspec'
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 include Sorcery::TestHelpers::Rails::Request
 include UserAuth
+include TestGeocoder
 
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
@@ -87,3 +88,5 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 end
+
+TestGeocoder.stub_geocode! unless ENV['ALLOW_GEOCODE']

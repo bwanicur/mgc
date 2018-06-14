@@ -1,14 +1,14 @@
 require 'rails_helper'
 
 describe JsonPresenter::Venue do
-  
+
   describe '#atts' do
     it "should return a hash of specific attributes" do
       venue = FactoryBot.build(:venue)
       res = described_class.new(venue).atts
       expect(res[:name]).to eq(venue.name)
-      expect(res[:lat]).to eq(venue.lat)
-      expect(res[:lng]).to eq(venue.lng)
+      expect(res[:latitude]).to eq(venue.latitude)
+      expect(res[:longitude]).to eq(venue.longitude)
       expect(res[:address1]).to eq(venue.address1)
       expect(res[:address2]).to eq(venue.address2)
       expect(res[:city]).to eq(venue.city)

@@ -1,13 +1,12 @@
 module JsonPresenter
   class Gig
-    
+
     def initialize(gig)
       @gig = gig
     end
-
-    def atts 
+    def atts
       {
-				id: @gig.id,
+        id: @gig.id,
         title: @gig.title,
         start_time: @gig.start_time,
         end_time: @gig.end_time,

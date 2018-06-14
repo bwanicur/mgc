@@ -7,10 +7,10 @@ module JsonPresenter
 
     def atts
       {
-				id: @venue.id,
+        id: @venue.id,
         name: @venue.name,
-        lat: @venue.lat,
-        lng: @venue.lng,
+        latitude: @venue.latitude,
+        longitude: @venue.longitude,
         address1: @venue.address1,
         address2: @venue.address2,
         city: @venue.city,

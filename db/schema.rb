@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20180603160440) do
   create_table "gigs", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "venue_id", null: false
+    t.string "priv_hash", null: false
     t.boolean "is_template", default: false
     t.string "title", null: false
     t.datetime "start_time", null: false
@@ -40,6 +41,7 @@ ActiveRecord::Schema.define(version: 20180603160440) do
     t.jsonb "optional_data", default: {}
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["priv_hash"], name: "index_gigs_on_priv_hash", unique: true
     t.index ["user_id"], name: "index_gigs_on_user_id"
     t.index ["venue_id"], name: "index_gigs_on_venue_id"
   end
@@ -126,8 +128,8 @@ ActiveRecord::Schema.define(version: 20180603160440) do
     t.boolean "is_confirmed", default: false
     t.string "address1", null: false
     t.string "address2"
-    t.decimal "lat", precision: 10, scale: 6
-    t.decimal "lng", precision: 10, scale: 6
+    t.decimal "latitude"
+    t.decimal "longitude"
     t.string "city", null: false
     t.string "state", limit: 2, null: false
     t.string "zipcode", null: false

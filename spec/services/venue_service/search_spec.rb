@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe VenueService::Search do
-  
+
   describe '.initialize' do
     it "should raise an exception if the name is not present" do
       expect { described_class.new }.to raise_error(VenueService::SearchError)
@@ -16,7 +16,7 @@ describe VenueService::Search do
       @v3 = FactoryBot.create(:venue, state: 'NV', city: 'Nevada City')
       @v4 = FactoryBot.create(:venue, name: 'Different Name', state: 'NV', city: 'Las Vegas')
     end
-    
+
     it "should find venues by name" do
       res = described_class.new(name: 'test').run
       expect(res.count).to eq(3)
