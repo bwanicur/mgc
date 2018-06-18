@@ -46,7 +46,7 @@ module Backstage
     private
 
     def hm(musician)
-      JsonPresenter::Musician.new(musician).atts
+      JsonPresenter::Musician.new(musician).as_hash
     end
 
     def musician_params

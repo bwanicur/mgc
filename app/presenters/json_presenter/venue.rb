@@ -5,7 +5,7 @@ module JsonPresenter
       @venue = venue
     end
 
-    def atts
+    def as_hash
       {
         id: @venue.id,
         name: @venue.name,
@@ -23,7 +23,7 @@ module JsonPresenter
     end
 
     def as_json
-      atts.to_json
+      as_hash.to_json
     end
   end
 end

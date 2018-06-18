@@ -1,5 +1,5 @@
 class GigMusicianMembership < ApplicationRecord
-  validates :gig_id, :musician_id, presence: true
+  validates :gig_id, :musician_id, :confirmation_token, presence: true
   validates :gig_id, uniqueness: { scope: :musician_id }
 
   enum confirmation_status: { pending: 0, yes: 1, no: 2 }
@@ -9,12 +9,15 @@ class GigMusicianMembership < ApplicationRecord
 
   has_one :payment
 
-  before_create :set_confirmation_token
+  before_validation :set_confirmation_token
 
   private
 
   def set_confirmation_token
-    self.confirmation_token = SecureRandom.hex
+    if !confirmation_token.present?
+      self.confirmation_token = SecureRandom.hex
+    else
+      true
+    end
   end
-
 end

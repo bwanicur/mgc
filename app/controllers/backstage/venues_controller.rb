@@ -40,10 +40,10 @@ module Backstage
       render json: { success: success }
     end
 
-    private 
+    private
 
     def hv(venue)
-      JsonPresenter::Venue.new(venue).atts
+      JsonPresenter::Venue.new(venue).as_hash
     end
 
     def venue_search_params
@@ -52,12 +52,12 @@ module Backstage
 
     def venue_params
       params.require(:venue).permit(
-        :id, 
-        :name, 
-        :address1, 
-        :address2, 
-        :city, 
-        :state, 
+        :id,
+        :name,
+        :address1,
+        :address2,
+        :city,
+        :state,
         :zipcode,
         :phone,
         :email,

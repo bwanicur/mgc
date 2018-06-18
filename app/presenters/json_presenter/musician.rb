@@ -5,9 +5,9 @@ module JsonPresenter
       @musician = musician
     end
 
-    def atts 
+    def as_hash
       {
-				id: @musician.id,
+        id: @musician.id,
         email: @musician.email,
         first_name: @musician.first_name,
         last_name: @musician.last_name,
@@ -23,7 +23,7 @@ module JsonPresenter
     end
 
     def as_json
-      atts.to_json
+      as_hash.to_json
     end
 
   end

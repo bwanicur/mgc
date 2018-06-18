@@ -4,19 +4,20 @@ module JsonPresenter
     def initialize(gig)
       @gig = gig
     end
-    def atts
+
+    def as_hash
       {
         id: @gig.id,
         title: @gig.title,
         start_time: @gig.start_time,
         end_time: @gig.end_time,
-        venue: JsonPresenter::Venue.new(@gig.venue).atts,
-        musicians: @gig.musicians.map{ |m| JsonPresenter::Musician.new(m).atts }
+        venue: JsonPresenter::Venue.new(@gig.venue).as_hash,
+        musicians: @gig.musicians.map{ |m| JsonPresenter::Musician.new(m).as_hash }
       }
     end
 
     def as_json
-      atts.to_json
+      as_hash.to_json
     end
   end
 end

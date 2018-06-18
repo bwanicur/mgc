@@ -16,7 +16,8 @@ module Backstage
     def create
       atts = gig_params.merge(user_id: current_user.id)
       musicians = atts.delete(:musicians)
-      if gig = GigService::Create.new(gig: atts, musicians: musicians).run
+      gig = GigService::Create.new(gig: atts, musicians: musicians).run
+      if gig.valid?
         render json: { success: true, gig: hg(gig) }
       else
         all_errors = { gig: gig.errors, musicians: gig.musicians.map{|m| m.errors } }
@@ -41,7 +42,7 @@ module Backstage
     private
 
     def hg(gig)
-      JsonPresenter::Gig.new(gig).atts
+      JsonPresenter::Gig.new(gig).as_hash
     end
 
     def gig_search_params
