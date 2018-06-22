@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 20180603160440) do
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.integer "confirmation_status", default: 0
+    t.integer "email_count", default: 0
+    t.integer "sms_count", default: 0
     t.integer "alt_instrument_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -76,14 +78,14 @@ ActiveRecord::Schema.define(version: 20180603160440) do
   end
 
   create_table "payments", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "gig_musician_membership_id"
-    t.integer "amount_cents_cents", default: 0, null: false
-    t.string "amount_cents_currency", default: "USD", null: false
+    t.integer "gig_musician_membership_id", null: false
+    t.integer "amount_cents", default: 0, null: false
+    t.string "amount_currency", default: "USD", null: false
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["gig_musician_membership_id"], name: "index_payments_on_gig_musician_membership_id"
   end
 
   create_table "user_venue_votes", force: :cascade do |t|

@@ -2,10 +2,7 @@ module Backstage
   class GigMusicianMembershipsController < BaseController
 
     def create
-      gmm = GigMusicianMembership.create({
-        gig_id: params[:gig_id],
-        musician_id: params[:musician_id]
-      })
+      gmm = GigService::AddMusician.new(add_musician_params).run
       if gmm.valid?
         render json: { success: true, gig_musician_membership: hash_gmm(gmm) }
       else
@@ -31,6 +28,10 @@ module Backstage
     end
 
     private
+
+    def add_musician_params
+      params.permit(:gig_id, :musician_id, :payment_amount_cents)
+    end
 
     def hash_gmm(gmm)
       JsonPresenter::GigMusicianMembership.new(gmm).as_hash

@@ -1,0 +1,28 @@
+require 'rails_helper'
+
+describe 'BACKSTAGE: Gig Invitation Requests' do
+  include EmailTestHelper
+
+  let(:root_path) { '/backstage/gig_invitations' }
+  let(:payment) { FactoryBot.build(:payment, amount: Money.new(10000)) }
+  let(:gmm) { FactoryBot.create(:gig_musician_membership, payment: payment) }
+
+  describe 'POST #send_sms_invitation' do
+  end
+
+  describe 'POST #send_email_invitation' do
+    it "should send an email invite" do
+      post root_path + '/send_email_invitation', params: { id: gmm.id }
+      res = JSON.parse(response.body)
+      expect(res['success']).to be_truthy
+      expect(last_sent_email.subject).to match(/^MGC GIG ALERT.*/)
+    end
+
+    it "should update the email_count on the GigMusicianMembership object" do
+      expect(gmm.email_count).to eq(0)
+      post root_path + '/send_email_invitation', params: { id: gmm.id }
+      expect(gmm.reload.email_count).to eq(1)
+    end
+  end
+
+end

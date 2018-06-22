@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h2>MGC Gig Alert</h2>
+    <p>
+      <%= full_name(@user) %> wants you to play a gig!
+    </p>
+    <hr  />
+    <h3>Details:</h3>
+    <p>
+      <%= date_time_full(@gig.start_time) %> to <%= time_only(@gig.end_time) %>
+    </p>
+    <p>
+      <%= full_address(@venue) %>
+    </p>
+    <% if @gig.map_link.present? %>
+      <p>
+        <%= link_to('MAP LINK', @gig.map_link) %>
+      </p>
+    <% end %>
+    <p>
+      Pay: <%= humanized_money_with_symbol(@gmm.payment.amount) %>
+    </p>
+    <hr />
+    <h3>PLEASE CONFIRM</h3>
+    <p>
+      <strong>Click or Paste the link into browser</strong>
+    </p>
+    <p>
+      <%= link_to(@gmm_link, @gmm_link) %>
+    </p>
+  </body>
+</html>
