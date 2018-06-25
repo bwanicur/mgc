@@ -16,6 +16,7 @@ gem 'sorcery'
 gem 'money-rails'
 gem 'kaminari'
 gem 'geocoder'
+gem 'twilio-ruby'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

@@ -1,6 +1,7 @@
 class Musician < ApplicationRecord
-  validates :user_id, :email, :phone1, presence: true
+  validates :user_id, :email, :phone, presence: true
   validates :user_id, uniqueness: { scope: :email }
+  validates :phone, length: { is: 10 }
 
   belongs_to :user
   belongs_to :instrument
@@ -13,5 +14,13 @@ class Musician < ApplicationRecord
 
   has_many :gig_musician_memberships, dependent: :destroy
   has_many :gigs, through: :gig_musician_memberships
+
+  before_validation :digits_only_for_phone
+
+  private
+
+  def digits_only_for_phone
+    phone.gsub!(/[^\d]/, '')
+  end
 
 end

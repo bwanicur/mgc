@@ -89,4 +89,6 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 end
 
+Faker::Config.locale = 'en-US'
+
 TestGeocoder.stub_geocode! unless ENV['ALLOW_GEOCODE']

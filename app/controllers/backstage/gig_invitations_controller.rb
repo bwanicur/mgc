@@ -2,13 +2,17 @@ module Backstage
   class GigInvitationsController < BaseController
 
     def send_sms_invitation
+      gmm = get_gmm
+      res = SmsGigInvitationJob.perform_later(gmm)
+      gmm.update_attribute(:sms_count, gmm.sms_count + 1) if res.present?
+      render json: { success: res.present?, gmm: hash_gmm(gmm) }
     end
 
     def send_email_invitation
       gmm = get_gmm
-      res = GigInvitationMailer.invite_email(gmm).deliver_later
-      gmm.update_attribute(:email_count, gmm.email_count + 1) if res
-      render json: { success: res, gmm: hash_gmm(gmm) }
+      res = EmailGigInvitationJob.perform_later(gmm)
+      gmm.update_attribute(:email_count, gmm.email_count + 1) if res.present?
+      render json: { success: res.present?, gmm: hash_gmm(gmm) }
     end
 
     private

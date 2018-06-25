@@ -8,6 +8,19 @@ describe 'BACKSTAGE: Gig Invitation Requests' do
   let(:gmm) { FactoryBot.create(:gig_musician_membership, payment: payment) }
 
   describe 'POST #send_sms_invitation' do
+    it "should send a SMS invite" do
+      post root_path + '/send_sms_invitation', params: { id: gmm.id }
+      res = JSON.parse(response.body)
+      expect(res['success']).to be_truthy
+    end
+
+    it "should update the sms_count on the GigMusicianMembership object" do
+      expect(gmm.sms_count).to eq(0)
+      post root_path + '/send_sms_invitation', params: { id: gmm.id }
+      res = JSON.parse(response.body)
+      expect(res['gmm']['sms_count']).to eq(1)
+      expect(gmm.reload.sms_count).to eq(1)
+    end
   end
 
   describe 'POST #send_email_invitation' do
@@ -21,6 +34,8 @@ describe 'BACKSTAGE: Gig Invitation Requests' do
     it "should update the email_count on the GigMusicianMembership object" do
       expect(gmm.email_count).to eq(0)
       post root_path + '/send_email_invitation', params: { id: gmm.id }
+      res = JSON.parse(response.body)
+      expect(res['gmm']['email_count']).to eq(1)
       expect(gmm.reload.email_count).to eq(1)
     end
   end

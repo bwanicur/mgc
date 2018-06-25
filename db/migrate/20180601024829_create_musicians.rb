@@ -13,8 +13,7 @@ class CreateMusicians < ActiveRecord::Migration[5.1]
       t.string :city
       t.string :state
       t.string :zipcode
-      t.string :phone1, null: false
-      t.string :phone2
+      t.string :phone, null: false
       t.jsonb :optional_data, default: {}
 
       t.timestamps

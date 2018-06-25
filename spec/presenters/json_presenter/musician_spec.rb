@@ -9,7 +9,7 @@ describe JsonPresenter::Musician do
       res = described_class.new(m).as_hash
       expect(res[:email]).to eq(m.email)
       expect(res[:instrument]).to eq(instrument.name)
-      expect(res[:phone1]).to eq(m.phone1)
+      expect(res[:phone]).to eq(m.phone)
     end
   end
 end

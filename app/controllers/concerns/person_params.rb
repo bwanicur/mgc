@@ -9,7 +9,6 @@ module PersonParams
     :city,
     :state,
     :zipcode,
-    :phone1,
-    :phone2
+    :phone
   ]
 end

@@ -34,6 +34,7 @@ Rails.application.configure do
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  config.action_mailer.raise_delivery_errors = true
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
@@ -44,4 +45,7 @@ Rails.application.configure do
   # allow active job to run synchronously
   config.active_job.queue_adapter = :inline
 
+
 end
+
+ Rails.application.default_url_options = { host: 'localhost:3000' }

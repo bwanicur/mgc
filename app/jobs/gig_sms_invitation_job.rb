@@ -1,4 +1,0 @@
-class GigSmsInvitationJob < ApplicationJob
-
-
-end

@@ -9,10 +9,9 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :city
       t.string :state
       t.string :zipcode
-      t.string :phone1
-      t.string :phone2
+      t.string :phone
       t.jsonb :optional_data, default: {}
-      
+
       # sorcery columns
       t.string :crypted_password
       t.string :salt

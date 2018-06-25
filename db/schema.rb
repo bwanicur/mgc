@@ -68,8 +68,7 @@ ActiveRecord::Schema.define(version: 20180603160440) do
     t.string "city"
     t.string "state"
     t.string "zipcode"
-    t.string "phone1", null: false
-    t.string "phone2"
+    t.string "phone", null: false
     t.jsonb "optional_data", default: {}
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -107,8 +106,7 @@ ActiveRecord::Schema.define(version: 20180603160440) do
     t.string "city"
     t.string "state"
     t.string "zipcode"
-    t.string "phone1"
-    t.string "phone2"
+    t.string "phone"
     t.jsonb "optional_data", default: {}
     t.string "crypted_password"
     t.string "salt"

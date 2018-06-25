@@ -16,8 +16,7 @@ module JsonPresenter
         city: @musician.city,
         state: @musician.state,
         zipcode: @musician.zipcode,
-        phone1: @musician.phone1,
-        phone2: @musician.phone2,
+        phone: @musician.phone,
         instrument: @musician.instrument.name
       }
     end

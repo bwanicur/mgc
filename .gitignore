@@ -13,11 +13,10 @@
 !/log/.keep
 !/tmp/.keep
 log/*
-tmp/* 
+tmp/*
 
 /node_modules
 /yarn-error.log
-
 
 .byebug_history
 /public/packs
@@ -25,5 +24,7 @@ tmp/*
 /node_modules
 yarn-debug.log*
 .yarn-integrity
+
+.env
 
 TODO.txt
