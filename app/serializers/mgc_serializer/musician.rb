@@ -1,6 +1,5 @@
-module JsonPresenter
+module MGCSerializer
   class Musician
-
     def initialize(musician)
       @musician = musician
     end
@@ -24,6 +23,5 @@ module JsonPresenter
     def as_json
       as_hash.to_json
     end
-
   end
 end

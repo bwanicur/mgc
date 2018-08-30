@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe JsonPresenter::GigMusicianMembership do
+describe MGCSerializer::GigMusicianMembership do
 
   describe '#as_hash' do
 

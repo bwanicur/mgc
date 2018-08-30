@@ -1,6 +1,5 @@
-module JsonPresenter
+module MGCSerializer
   class Venue
-
     def initialize(venue)
       @venue = venue
     end

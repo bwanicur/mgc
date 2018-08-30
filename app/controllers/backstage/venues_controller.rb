@@ -43,7 +43,7 @@ module Backstage
     private
 
     def hv(venue)
-      JsonPresenter::Venue.new(venue).as_hash
+      MGCSerializer::Venue.new(venue).as_hash
     end
 
     def venue_search_params

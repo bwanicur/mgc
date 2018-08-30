@@ -1,6 +1,5 @@
-module JsonPresenter
+module MGCSerializer
   class GigMusicianMembership
-
     def initialize(gmm)
       @gmm = gmm
     end

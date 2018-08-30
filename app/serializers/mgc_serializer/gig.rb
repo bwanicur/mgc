@@ -1,6 +1,5 @@
-module JsonPresenter
+module MGCSerializer
   class Gig
-
     def initialize(gig)
       @gig = gig
     end
@@ -11,8 +10,8 @@ module JsonPresenter
         title: @gig.title,
         start_time: @gig.start_time,
         end_time: @gig.end_time,
-        venue: JsonPresenter::Venue.new(@gig.venue).as_hash,
-        musicians: @gig.musicians.map{ |m| JsonPresenter::Musician.new(m).as_hash }
+        venue: MGCSerializer::Venue.new(@gig.venue).as_hash,
+        musicians: @gig.musicians.map { |m| MGCSerializer::Musician.new(m).as_hash }
       }
     end
 

@@ -42,7 +42,7 @@ module Backstage
     private
 
     def hg(gig)
-      JsonPresenter::Gig.new(gig).as_hash
+      MGCSerializer::Gig.new(gig).as_hash
     end
 
     def gig_search_params

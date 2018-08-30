@@ -1,12 +1,12 @@
 module GigService
   class SearchError < StandardError
   end
-  
+
   class Search
     LIMIT = 20
 
     def initialize(user, atts={})
-      @user = user 
+      @user = user
       raise SearchError.new('User is required') unless @user.present?
       @venue_id = atts[:venue_id]
       @title = atts[:title]

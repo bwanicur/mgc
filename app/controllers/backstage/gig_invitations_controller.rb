@@ -1,6 +1,5 @@
 module Backstage
   class GigInvitationsController < BaseController
-
     def send_sms_invitation
       gmm = get_gmm
       res = SmsGigInvitationJob.perform_later(gmm)
@@ -18,13 +17,13 @@ module Backstage
     private
 
     def get_gmm
-      GigMusicianMembership.where(id: params[:id])
-        .includes([{gig: [:user, :venue]}, :musician]).first
+      GigMusicianMembership
+        .where(id: params[:id])
+        .includes([{ gig: %i[user venue] }, :musician]).first
     end
 
     def hash_gmm(gmm)
-      JsonPresenter::GigMusicianMembership.new(gmm).as_hash
+      MGCSerializer::GigMusicianMembership.new(gmm).as_hash
     end
-
   end
 end

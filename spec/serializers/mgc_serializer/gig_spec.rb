@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe JsonPresenter::Gig do
+describe MGCSerializer::Gig do
 
   describe '#as_hash' do
 

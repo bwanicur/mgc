@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe JsonPresenter::Musician do
+describe MGCSerializer::Musician do
 
   describe '#as_hash' do
     it "should return a hash of specific attributes" do

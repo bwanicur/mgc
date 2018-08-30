@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  #root to: 'backstage/home#home', method: :get, constraints: RouteConstraints::UserHasAuth.new, as: :auth_root
+  root to: 'backstage/home#home', method: :get, constraints: RouteConstraints::UserHasAuth.new, as: :auth_root
   #root to: 'sessions#new', method: :get
   root to: 'backstage/home#home', method: :get
 

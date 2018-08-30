@@ -34,7 +34,7 @@ module Backstage
     end
 
     def hash_gmm(gmm)
-      JsonPresenter::GigMusicianMembership.new(gmm).as_hash
+      MGCSerializer::GigMusicianMembership.new(gmm).as_hash
     end
 
   end

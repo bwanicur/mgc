@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe JsonPresenter::Venue do
+describe MGCSerializer::Venue do
 
   describe '#as_hash' do
     it "should return a hash of specific attributes" do
