@@ -9,9 +9,8 @@ import App from '../src/gig_manager/app'
 // problematic importing the CSS in our *.sass files
 import 'semantic-ui-css/semantic.css'
 
-// import rootReducer from '../src/reducers'
-// Temp while we work on the router
-const rootReducer = () => ([])
+import rootReducer from '../src/gig_manager/reducers'
+
 const store = createStore(rootReducer)
 
 document.addEventListener('DOMContentLoaded', () => {

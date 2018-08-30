@@ -1,11 +1,10 @@
 class SessionsController < ApplicationController
-
   def new
     @session_user = User.new
   end
 
-def create
-    if user = login(params[:email], params[:password])
+  def create
+    if login(params[:email], params[:password])
       flash[:success] = "Welcome to MGC"
       redirect_to auth_root_path
     else
@@ -19,5 +18,4 @@ def create
     logout
     redirect_to sessions_path
   end
-
 end

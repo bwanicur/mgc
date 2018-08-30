@@ -10,5 +10,4 @@ class ApplicationController < ActionController::Base
   def page_param
     params[:page] || 1
   end
-
 end
