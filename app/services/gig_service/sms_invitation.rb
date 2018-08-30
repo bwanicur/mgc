@@ -38,6 +38,7 @@ module GigService
         Date: #{date_time_full(@gig.start_time)} to #{time_only(@gig.end_time)}
         Address: #{full_address(@gig.venue)}
         Pay: #{humanized_money_with_symbol(@gmm.payment.amount)}
+        -----------------------
         PLEASE CONFIRM: #{gig_invitation_url(@gmm.confirmation_token)}
       STR
     end

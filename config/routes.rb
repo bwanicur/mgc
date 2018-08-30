@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
-  root to: 'backstage/home_controller#home', method: :get, constraints: RouteConstraints::UserHasAuth.new, as: :auth_root
-	root to: 'sessions#new', method: :get
+  #root to: 'backstage/home#home', method: :get, constraints: RouteConstraints::UserHasAuth.new, as: :auth_root
+  #root to: 'sessions#new', method: :get
+  root to: 'backstage/home#home', method: :get
 
-	resources :sessions, only: [ :new, :create, :destroy ]
+  resources :sessions, only: [ :new, :create, :destroy ]
   resources :users, only: [ :new, :create, :show ]
-  resources :gigs, only: [ :index, :show ]
+  resources :gigs, only: [ :index, :show ] do
+    member do
+      get :info
+    end
+  end
   resources :gig_invitations, only: [ :show, :update ]
 
   namespace :backstage do

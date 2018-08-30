@@ -1,10 +1,10 @@
 module RouteConstraints
-	class UserHasAuth
-  	include RouteConstraints::UserConstraint
+  class UserHasAuth
+    include RouteConstraints::UserConstraint
 
     def matches?(request)
       current_user(request).present?
     end
 
-	end
+  end
 end
