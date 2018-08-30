@@ -34,6 +34,7 @@ group :development do
   gem 'spring-commands-rspec'
   gem 'database_cleaner'
   gem 'capybara'
+  gem 'rubocop'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

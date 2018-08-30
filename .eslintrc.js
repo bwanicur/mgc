@@ -1,11 +1,12 @@
+// https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb
 module.exports = {
   "parser": "babel-eslint",
   "extends":  [
-    "airbnb-base",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "airbnb-base"
   ],
   "rules": {
-    "semi": [2, "never"],
+    "semi": 0,
     "import/no-unresolved": 0
   }
 };
