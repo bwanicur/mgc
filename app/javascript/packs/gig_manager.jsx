@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import { BrowserRouter } from 'react-router-dom'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
@@ -11,7 +11,7 @@ import 'semantic-ui-css/semantic.css'
 
 // import rootReducer from '../src/reducers'
 // Temp while we work on the router
-const rootReducer = () => ( [] )
+const rootReducer = () => ([])
 const store = createStore(rootReducer)
 
 document.addEventListener('DOMContentLoaded', () => {
