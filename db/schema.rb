@@ -57,8 +57,7 @@ ActiveRecord::Schema.define(version: 20180603160440) do
 
   create_table "musicians", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "linked_to_user_id"
-    t.integer "linked_to_self_user_id"
+    t.integer "linked_user_id"
     t.integer "instrument_id"
     t.string "email", null: false
     t.string "first_name"
@@ -72,7 +71,7 @@ ActiveRecord::Schema.define(version: 20180603160440) do
     t.jsonb "optional_data", default: {}
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["linked_to_self_user_id"], name: "index_musicians_on_linked_to_self_user_id"
+    t.index ["linked_user_id"], name: "index_musicians_on_linked_user_id"
     t.index ["user_id", "email"], name: "index_musicians_on_user_id_and_email", unique: true
   end
 

@@ -11,10 +11,10 @@ FactoryBot.define do
     zipcode { Faker::Address.zip }
     phone '111-111-1111'
 
-    after(:create) do |user, evaluator|
+    after(:create) do |user, _evaluator|
       FactoryBot.create(:musician,
         user: user,
-        linked_to_self_user_id: user.id,
+        linked_user_id: user.id,
         first_name: user.first_name,
         last_name: user.last_name,
         address1: user.address1,

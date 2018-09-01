@@ -1,9 +1,9 @@
 module VenueService
   class SearchError < StandardError
   end
-  
+
   class Search
-    def initialize(atts={})
+    def initialize(atts = {})
       @name = atts[:name]
       raise SearchError.new('Name is required') unless @name.present?
       @city = atts[:city]

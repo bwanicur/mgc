@@ -5,12 +5,12 @@ module Backstage
     PER_PAGE = 10
 
     def index
-      # todo: replace with search service (order by musician gig memberships count)
+      # TODO: replace with search service (order by musician gig memberships count)
       musicians = current_user.musicians
       if has_paginate_params?
         musicians = musicians.page(page_param).per(PER_PAGE)
       end
-      render json: { musicians: musicians.map{|m| hm(m)} }
+      render json: { musicians: musicians.map { |m| hm(m) } }
     end
 
     def show

@@ -6,10 +6,7 @@ class GigMusicianMembership < ApplicationRecord
 
   belongs_to :gig
   belongs_to :musician
-  belongs_to :alt_instrument,
-    class_name: "Instrument",
-    foreign_key: :alt_instrument_id,
-    optional: true
+  belongs_to :alt_instrument, class_name: "Instrument", foreign_key: :alt_instrument_id, optional: true
 
   has_one :payment
 
