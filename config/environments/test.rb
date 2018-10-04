@@ -45,7 +45,7 @@ Rails.application.configure do
   # allow active job to run synchronously
   config.active_job.queue_adapter = :inline
 
-
+  config.active_storage.service  = :local
 end
 
  Rails.application.default_url_options = { host: 'localhost:3000' }

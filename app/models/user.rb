@@ -7,7 +7,9 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
 
   has_one :linked_musician, class_name: "Musician", foreign_key: :linked_user_id, required: false
-
+  
+  has_one_attached :avatar
+  
   has_many :musicians
   has_many :gigs
 end
