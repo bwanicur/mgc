@@ -9,4 +9,10 @@ class UsersController < ApplicationController
   # use page caching ?
   def show
   end
+  
+  private
+  
+  def user_params
+    params.require(:user).permit(*USER_PARAMS)
+  end
 end

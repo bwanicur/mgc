@@ -1,0 +1,16 @@
+<div class="ui two column centered grid" id="login-register-form-container">
+  <div class="column ui segment" id="login-form-container">
+    <h3>Login Form</h3>
+    <%= form_tag sessions_path, class: "ui form" do %>
+      <div class="field">
+        <%= label_tag :email, 'Email' %>
+        <%= text_field_tag :email, params[:email], placeholder: "Email" %>
+      </div>
+      <div class="field">
+        <%= label_tag :password, 'Password' %>
+        <%= password_field_tag :password, params[:password], placeholder: "Password" %>
+      </div>
+      <button class="ui primary button right floated" type="submit">Log In</button>
+    <% end %>
+  </div>
+</div>

@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  layout 'login'
+  
   def new
     @session_user = User.new
   end
@@ -16,6 +18,6 @@ class SessionsController < ApplicationController
 
   def destroy
     logout
-    redirect_to sessions_path
+    redirect_to new_session_path
   end
 end

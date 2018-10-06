@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MGC</title>
+    <%= csrf_meta_tags %>
+    <%= javascript_pack_tag 'public_app' %>
+    <%= stylesheet_pack_tag 'public_app' %>
+  </head>
+
+  <body>
+    <div class="ui container">
+      <%= yield %>
+    </div>
+  </body>
+</html>
