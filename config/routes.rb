@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
+  root to: 'sessions#new', method: :get
+
   # ReactJS App - GigManager
   root to: 'backstage/home#home', method: :get, constraints: RouteConstraints::UserHasAuth.new, as: :auth_root
-  
-  # tmp ...
-  root to: 'backstage/home#home', method: :get
-  # root to: 'sessions#new', method: :get
 
+  get '/backstage/logout', to: 'sessions#destroy', as: :logout
   resources :sessions, only: [ :new, :create, :destroy ]
   resources :users, only: [ :new, :create, :show ]
   resources :gigs, only: [ :index, :show ] do
@@ -25,7 +24,6 @@ Rails.application.routes.draw do
       post 'gig_invitations/send_sms_invitation/', to: 'gig_invitations#send_sms_invitation'
       post 'gig_invitations/send_email_invitation/', to: 'gig_invitations#send_email_invitation'
     end
-    get 'logout', to: 'sessions#destroy'
   end
 
 end

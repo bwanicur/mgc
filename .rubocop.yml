@@ -12,3 +12,6 @@ Metrics/LineLength:
   Enabled: false
 Metrics/MethodLength:
   Enabled: false
+
+Bundler/OrderedGems:
+  Enabled: false

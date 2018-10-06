@@ -1,11 +1,41 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { Icon, Menu } from 'semantic-ui-react'
 
 const Navigation = () => (
-  <div>
-    <NavLink to='/' activeClassName='active'>Dashboard</NavLink>
-    <NavLink to='/musicians' activeClassName='active'>Musicians</NavLink>
-    <NavLink to='/gigs' activeClassName='active'>Gigs</NavLink>
+  <div className="navigation-container">
+    <Menu fluid widths={5}>
+      <Menu.Item active={ null } >
+        <NavLink to='/'>
+            <Icon name="home" />
+            Dashboard
+        </NavLink>
+      </Menu.Item>
+      <Menu.Item active={ null } >
+        <NavLink to='/musicians'>
+            <Icon name="group" />
+            Musicians
+        </NavLink>
+      </Menu.Item>
+      <Menu.Item active={ null } >
+        <NavLink to='/gigs'>
+            <Icon name="music" />
+            Gigs
+        </NavLink>
+      </Menu.Item>
+      <Menu.Item active={ null } >
+        <NavLink to='/settings'>
+            <Icon name="setting" />
+            Settings
+        </NavLink>
+      </Menu.Item>
+      <Menu.Item active={ null } >
+        <NavLink to='/logout'>
+            <Icon name="power" />
+            Logout
+        </NavLink>
+      </Menu.Item>
+    </Menu>
   </div>
 )
 
