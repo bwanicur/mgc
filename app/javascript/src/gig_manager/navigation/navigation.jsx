@@ -30,10 +30,10 @@ const Navigation = () => (
         </NavLink>
       </Menu.Item>
       <Menu.Item active={ null } >
-        <NavLink to='/logout'>
-            <Icon name="power" />
-            Logout
-        </NavLink>
+        <a href='/logout'>
+          <Icon name="power" />
+          Logout
+        </a>
       </Menu.Item>
     </Menu>
   </div>

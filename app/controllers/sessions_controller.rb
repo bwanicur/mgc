@@ -7,7 +7,6 @@ class SessionsController < ApplicationController
 
   def create
     if login(params[:email], params[:password])
-      flash[:success] = "Welcome to MGC"
       redirect_to auth_root_path
     else
       flash.now[:error] = "There was a problem"

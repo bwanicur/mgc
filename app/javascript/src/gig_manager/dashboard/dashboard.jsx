@@ -3,13 +3,11 @@ import AvatarContainer from '../avatar/avatar_container'
 
 const Dashboard = () => (
   <div className="ui container">
-    <div className="ui two column grid">
-      <div className="row">
-        <div className="column">
-          <AvatarContainer />
-        </div>
-        <div className="column"></div>
+    <div className="ui grid">
+      <div className="five wide column">
+        <AvatarContainer />
       </div>
+      <div className="11 wide column"></div>
     </div>
   </div>
 )

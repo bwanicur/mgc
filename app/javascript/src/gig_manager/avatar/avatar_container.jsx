@@ -1,35 +1,17 @@
 import React from 'react'
-import { Image } from 'semantic-ui-react'
-import UpdateAvatarForm from './update_avatar_form'
+import { connect } from 'react-redux'
+import AvatarCard from './avatar_card'
+import * as avatarActions from '../actions/avatar_actions'
 
-class AvatarContainer extends React.Component {
-  state = {
-    isHovering: false,
+const mapDispatchToProps = dispatch => (
+  {
+    updateAvatar: value => dispatch(avatarActions.updateAvatar(value)),
   }
+)
 
-  showUpdateButton() {
-    this.setState({ isHovering: true })
-  }
+const AvatarContainer = connect(
+  null,
+  mapDispatchToProps,
+)(AvatarCard)
 
-  hideUpdateButton() {
-    this.setState({ isHovering: false })
-  }
-
-  // TODO: onhover should expose file upload and button
-  // then submit button
-  render() {
-    return (
-      <div
-        className="avatar-container"
-        onMouseEnter={this.showUpdateButton}
-        onMouseLeave={this.hideUpdateButton}
-      >
-        <Image src="" circular />
-        <UpdateAvatarForm className={this.state.isHovering ? '' : 'hidden'} />
-      </div>
-    )
-  }
-}
-
-// TODO: use connect()
 export default AvatarContainer

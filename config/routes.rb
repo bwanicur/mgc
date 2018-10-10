@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  root to: 'sessions#new', method: :get
-
   # ReactJS App - GigManager
   root to: 'backstage/home#home', method: :get, constraints: RouteConstraints::UserHasAuth.new, as: :auth_root
 
-  get '/backstage/logout', to: 'sessions#destroy', as: :logout
+  root to: 'sessions#new', method: :get
+
+  get '/logout', to: 'sessions#destroy', as: :logout
   resources :sessions, only: [ :new, :create, :destroy ]
   resources :users, only: [ :new, :create, :show ]
   resources :gigs, only: [ :index, :show ] do
