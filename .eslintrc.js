@@ -7,6 +7,8 @@ module.exports = {
   ],
   "rules": {
     "semi": 0,
-    "import/no-unresolved": 0
+    "import/no-unresolved": 0,
+    "object-shorthand": 0,
+    "class-methods-use-this": 0,
   }
 };

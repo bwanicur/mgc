@@ -3,7 +3,7 @@ import Navigation from './navigation/navigation'
 import MainDisplay from './main/main_display'
 
 const App = () => (
-  <div className="app-wrapper">
+  <div id="app-wrapper" className="ui container">
     <Navigation />
     <MainDisplay />
   </div>

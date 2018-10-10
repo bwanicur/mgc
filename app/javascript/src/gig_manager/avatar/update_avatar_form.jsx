@@ -1,7 +1,13 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-const UpdateAvatarForm = ({ onButtonClick }) => (
-  <div>UPDATE AVATAR BUTTON</div>
+const UpdateAvatarForm = ({ updateAvatar }) => (
+<div>UPDATE IMAGE BUTTON</div>
+// TODO: form here - onsubmit --> updateAvatar
 )
 
-export default UpdateAvatarButton
+UpdateAvatarForm.propTypes = {
+  updateAvatar: PropTypes.func,
+}
+
+export default UpdateAvatarForm
