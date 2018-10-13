@@ -5,19 +5,8 @@ module MGCSerializer
     end
 
     def as_hash
-      {
-        id: @musician.id,
-        email: @musician.email,
-        first_name: @musician.first_name,
-        last_name: @musician.last_name,
-        address1: @musician.address1,
-        address2: @musician.address2,
-        city: @musician.city,
-        state: @musician.state,
-        zipcode: @musician.zipcode,
-        phone: @musician.phone,
-        instrument: @musician.instrument.name
-      }
+      hash = MGCSerializer::Person.new(@musician).as_hash
+      hash.merge(instrument: @musician.instrument.name)
     end
 
     def as_json

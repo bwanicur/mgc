@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Gig Musician Membership Requests' do
 
-  let(:root_path) { '/backstage/gig_musician_memberships/' }
+  let(:root_path) { '/backstage/api/gig_musician_memberships/' }
   let(:gig) { FactoryBot.create(:gig) }
   let(:musician) { FactoryBot.create(:musician) }
 

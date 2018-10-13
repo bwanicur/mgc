@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'BACKSTAGE: Venue Requests' do
 
-  let(:root_path) { '/backstage/venues' }
+  let(:root_path) { '/backstage/api/venues' }
   let(:user) { FactoryBot.create(:user) }
 
   before(:each) { login_and_activate_user(user) }

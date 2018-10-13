@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'BACKSTAGE: Gig Invitation Requests' do
   include EmailTestHelper
 
-  let(:root_path) { '/backstage/gig_invitations' }
+  let(:root_path) { '/backstage/api/gig_invitations' }
   let(:payment) { FactoryBot.build(:payment, amount: Money.new(10000)) }
   let(:gmm) { FactoryBot.create(:gig_musician_membership, payment: payment) }
 

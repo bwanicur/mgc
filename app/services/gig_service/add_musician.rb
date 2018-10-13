@@ -14,7 +14,7 @@ module GigService
           gig_id: @gig_id,
           musician_id: @musician_id
         )
-        gmm.create_payment(amount: Money.new(@payment_amount_cents))
+        gmm.create_payment(amount: Money.new(@payment_amount_cents)) if gmm.valid?
         raise ActiveRecord::Rollback if needs_rollback?(gmm)
       end
       gmm

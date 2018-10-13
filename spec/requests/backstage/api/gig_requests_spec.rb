@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "BACKSTAGE: Gig Requests" do
 
-  let(:root_path) { "/backstage/gigs" }
+  let(:root_path) { "/backstage/api/gigs" }
   let(:user) { FactoryBot.create(:user) }
   let(:venue) { FactoryBot.create(:venue) }
   let(:gig) { FactoryBot.create(:gig, user: user, venue: venue) }

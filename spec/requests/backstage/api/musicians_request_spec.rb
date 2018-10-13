@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "BACKSTAGE: Musicians Requests" do
 
-  let(:root_path) { "/backstage/musicians" }
+  let(:root_path) { "/backstage/api/musicians" }
   let(:user) { FactoryBot.create(:user) }
   let(:instrument) { FactoryBot.create(:instrument) }
 
