@@ -1,6 +1,6 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
-import Dashboard from '../dashboard/dashboard'
+import DashboardContainer from '../dashboard/dashboard_container'
 import Musicians from '../musicians/musicians'
 import Gigs from '../gigs/gigs'
 import Settings from '../settings/settings'
@@ -8,7 +8,7 @@ import Settings from '../settings/settings'
 const MainDisplay = () => (
   <div>
     <Switch>
-      <Route exact path='/' component={Dashboard} />
+      <Route exact path='/' component={DashboardContainer} />
       <Route path='/musicians' component={Musicians} />
       <Route path='/gigs' component={Gigs} />
       <Route path='/settings' component={Settings} />

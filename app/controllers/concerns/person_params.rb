@@ -1,5 +1,6 @@
 module PersonParams
   PERSON_PARAMS = [
+    :id,
     :email,
     :first_name,
     :last_name,

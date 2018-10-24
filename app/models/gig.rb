@@ -9,6 +9,8 @@ class Gig < ApplicationRecord
 
   before_validation :set_priv_hash
 
+  scope :upcoming, -> { where("start_time >= ?", Time.zone.now - 4.hours) }
+
   private
 
   def set_priv_hash

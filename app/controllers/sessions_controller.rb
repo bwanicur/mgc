@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
 
   def create
     if login(params[:email], params[:password])
-      redirect_to auth_root_path
+      redirect_to backstage_root_path
     else
       flash.now[:error] = "There was a problem"
       @session_user = User.new(email: params[:email])

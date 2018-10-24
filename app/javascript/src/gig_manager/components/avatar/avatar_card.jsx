@@ -3,6 +3,9 @@ import PropTypes from 'prop-types'
 import { Card, Icon, Image } from 'semantic-ui-react'
 import UpdateAvatarForm from './update_avatar_form'
 
+
+// TODO: we can cache/load the avatar image in the props (since it will already be loaded)
+
 class AvatarCard extends React.Component {
   static propTypes = {
     updateAvatar: PropTypes.func,
@@ -34,7 +37,7 @@ class AvatarCard extends React.Component {
         <Card.Content>
           <Card.Header>Full Name</Card.Header>
           <Card.Description>
-            You have 10 gigs this month!
+            You have X gigs this month!
           </Card.Description>
         </Card.Content>
       </Card>

@@ -1,5 +1,6 @@
 module Backstage
-  class HomeController < BaseController
+  class HomeController < ApplicationController
+    layout 'backstage'
     # reactjs app
     def home
     end

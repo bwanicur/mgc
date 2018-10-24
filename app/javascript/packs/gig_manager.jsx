@@ -1,24 +1,25 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
-import createBrowserHistory from 'history/createBrowserHistory'
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
-
-import App from '../src/gig_manager/app'
+import thunk from 'redux-thunk'
 
 // problematic importing the CSS in our *.sass files
 import 'semantic-ui-css/semantic.min.css'
 
-import rootReducer from '../src/gig_manager/reducers'
+import rootReducer from '../src/gig_manager/reducers/root_reducer'
+import App from '../src/gig_manager/components/app'
 
-const store = createStore(rootReducer)
-const history = createBrowserHistory()
+const store = createStore(
+  rootReducer,
+  applyMiddleware(thunk),
+)
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
     <Provider store={store}>
-      <BrowserRouter history={history} basename="/backstage">
+      <BrowserRouter basename="/backstage">
         <App />
       </BrowserRouter>
     </Provider>,

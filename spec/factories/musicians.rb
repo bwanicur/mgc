@@ -9,6 +9,6 @@ FactoryBot.define do
     city { Faker::Address.city }
     state { Faker::Address.state }
     zipcode { Faker::Address.zip }
-    phone '111-111-1111'
+    phone { '111-111-1111' }
   end
 end
