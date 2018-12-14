@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import {
+  Collapse,
   Navbar,
   NavbarToggler,
   NavbarBrand,
@@ -9,14 +10,25 @@ import {
   NavLink,
 } from 'reactstrap';
 
-class Navigation extends React.Component {
+class CollapseableNavigation extends React.Component {
+  state = {
+    isOpen: true,
+  }
+
+  toggle = () => {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  }
+
   render() {
     return (
       <div>
-        <Navbar color="light" light expand="md">
-          <NavbarBrand tag={Link} to="/">MGC</NavbarBrand>
+        <Navbar color="faded" light>
+          <NavbarBrand tag={Link} to="/" className="mr-auto">MGC</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
-            <Nav className="ml-auto" navbar>
+          <Collapse isOpen={this.state.isOpen} navbar>
+            <Nav navbar>
               <NavItem>
                 <NavLink tag={Link} to="/gigs">Gigs</NavLink>
               </NavItem>
@@ -27,9 +39,11 @@ class Navigation extends React.Component {
                 <NavLink tag={Link} to="/settings">Settings</NavLink>
               </NavItem>
             </Nav>
+          </Collapse>
         </Navbar>
       </div>
-    )
+    );
   }
 }
-export default Navigation
+
+export default CollapseableNavigation;

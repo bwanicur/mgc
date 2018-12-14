@@ -1,14 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Card, Icon, Image } from 'semantic-ui-react'
-import UpdateAvatarForm from './update_avatar_form'
-
-
-// TODO: we can cache/load the avatar image in the props (since it will already be loaded)
+import { Card, CardTitle, CardText } from 'reactstrap'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import AvatarForm from './avatar_form'
 
 class AvatarCard extends React.Component {
   static propTypes = {
     updateAvatar: PropTypes.func,
+    image: PropTypes.string,
   }
 
   state = {
@@ -20,7 +19,7 @@ class AvatarCard extends React.Component {
   hideUpdateButton = () => this.setState({ isHovering: false })
 
   render() {
-    const image = false ? <Image src="" /> : <Icon name="user" size="massive" />
+    const image = this.props.image ? <CardImg src={ this.props.image } /> : <FontAwesomeIcon name="fas fa-user" />
     return (
       <Card>
         <div
@@ -29,17 +28,15 @@ class AvatarCard extends React.Component {
           onMouseLeave={this.hideUpdateButton}
         >
           { image }
-          <UpdateAvatarForm
+          <AvatarForm
             onUpdateAvatar={this.props.updateAvatar}
-            className={this.state.isHovering ? '' : 'hidden'}
+            isHovering={this.state.isHovering}
           />
         </div>
-        <Card.Content>
-          <Card.Header>Full Name</Card.Header>
-          <Card.Description>
+        <CardTitle>Full Name</CardTitle>
+        <CardText>
             You have X gigs this month!
-          </Card.Description>
-        </Card.Content>
+        </CardText>
       </Card>
     )
   }
