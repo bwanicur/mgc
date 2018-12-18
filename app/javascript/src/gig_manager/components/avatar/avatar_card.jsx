@@ -1,7 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Card, CardTitle, CardText } from 'reactstrap'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  Card,
+  CardTitle,
+  CardText,
+  CardImg,
+} from 'reactstrap'
 import AvatarForm from './avatar_form'
 
 class AvatarCard extends React.Component {
@@ -19,7 +23,7 @@ class AvatarCard extends React.Component {
   hideUpdateButton = () => this.setState({ isHovering: false })
 
   render() {
-    const image = this.props.image ? <CardImg src={ this.props.image } /> : <FontAwesomeIcon name="fas fa-user" />
+    const image = this.props.image ? <CardImg src={ this.props.image } /> : <i className="fa fa-4x fa-user"></i>
     return (
       <Card>
         <div

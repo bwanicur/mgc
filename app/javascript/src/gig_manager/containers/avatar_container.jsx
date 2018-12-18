@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import AvatarCard from './avatar_card';
-import * as avatarActions from '../../actions/avatar_actions';
+import AvatarCard from '../components/avatar/avatar_card';
+import * as avatarActions from '../actions/avatar_actions';
 
 const mapStateToProps = state => (
   {

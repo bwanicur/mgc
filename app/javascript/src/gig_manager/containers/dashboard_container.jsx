@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import AvatarContainer from '../avatar/avatar_container';
-import { fetchInitialData } from '../../actions/user_actions';
+import AvatarContainer from './avatar_container';
+import { fetchInitialData } from '../actions/user_actions';
 
 class Dashboard extends React.Component {
   static propTypes = {

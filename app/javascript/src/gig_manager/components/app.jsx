@@ -3,6 +3,9 @@ import React from 'react'
 import Navigation from './navigation/navigation'
 import MainDisplay from './main/main_display'
 
+import 'font-awesome/css/font-awesome.min.css';
+
+
 // TODO for smaller displays: <CollapseableNavigation />
 const App = () => (
   <div id="app-wrapper" className="ui container">

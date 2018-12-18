@@ -1,6 +1,6 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
-import DashboardContainer from '../dashboard/dashboard_container'
+import DashboardContainer from '../../containers/dashboard_container'
 import Musicians from '../musicians/musicians'
 import Gigs from '../gigs/gigs'
 import Settings from '../settings/settings'

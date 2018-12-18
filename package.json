@@ -2,13 +2,11 @@
   "name": "mgc",
   "private": true,
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.10",
-    "@fortawesome/free-solid-svg-icons": "^5.6.1",
-    "@fortawesome/react-fontawesome": "^0.1.3",
     "@rails/webpacker": "3.5",
     "axios": "^0.18.0",
     "babel-preset-react": "^6.24.1",
     "bootstrap": "^4.1.3",
+    "font-awesome": "^4.7.0",
     "history": "^4.7.2",
     "prop-types": "^15.6.1",
     "react": "^16.4.0",
@@ -19,8 +17,7 @@
     "reactstrap": "^6.5.0",
     "redux": "^4.0.0",
     "redux-thunk": "^2.3.0",
-    "resolve-url-loader": "^2.3.0",
-    "semantic-ui-css": "^2.3.3"
+    "resolve-url-loader": "^2.3.0"
   },
   "devDependencies": {
     "babel-eslint": "8",
