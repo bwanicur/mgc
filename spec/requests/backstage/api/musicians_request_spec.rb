@@ -15,7 +15,7 @@ describe "BACKSTAGE: Musicians Requests" do
       expect(response).to have_http_status(:success)
       hash = JSON.parse(response.body)
       expect(hash['musicians']).to be
-      expect(hash['musicians'].size).to eq(2)
+      expect(hash['musicians'].size).to eq(1)
     end
   end
 
@@ -74,7 +74,7 @@ describe "BACKSTAGE: Musicians Requests" do
       expect(response).to have_http_status(:success)
       hash = JSON.parse(response.body)
       expect(hash['success']).to eq(true)
-      expect(user.musicians.count).to eq(1)
+      expect(user.musicians.count).to eq(0)
     end
   end
 

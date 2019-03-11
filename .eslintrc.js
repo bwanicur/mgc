@@ -12,6 +12,6 @@ module.exports = {
     "object-shorthand": 0,
     "class-methods-use-this": 0,
     "func-names": 0,
-    
+    "no-console": 0,
   }
 };

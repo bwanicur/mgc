@@ -1,7 +1,6 @@
 module Backstage
   module API
     class GigMusicianMembershipsController < BaseController
-
       def create
         gmm = GigService::AddMusician.new(add_musician_params).run
         if gmm.valid?

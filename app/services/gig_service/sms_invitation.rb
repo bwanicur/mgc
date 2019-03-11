@@ -10,7 +10,7 @@ module GigService
     cattr_accessor :client
     @@client = Twilio::REST::Client
 
-    def initialize(gig_musician_membership, client=nil)
+    def initialize(gig_musician_membership)
       @gmm = gig_musician_membership
       @musician = @gmm.musician
       @gig = @gmm.gig

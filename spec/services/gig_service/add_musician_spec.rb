@@ -20,13 +20,7 @@ describe GigService::AddMusician do
       expect(gmm.payment.confirmed_at).to be_nil
     end
 
-    it "should return errors on the GigMusicianMembership object" do
-      atts.delete(:musician_id)
-      gmm = described_class.new(atts).run
-      expect(gmm.errors).to_not be_empty
-      expect(gmm.errors.first.first).to eq(:musician_id)
-    end
-
+    it "should raise some ActiveRecord::RecordInvalid exceptions"
   end
 
 end

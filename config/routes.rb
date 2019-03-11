@@ -15,8 +15,7 @@ Rails.application.routes.draw do
     # ReactJS App - GigManager
     get '/', to: 'home#home', as: :root
     namespace :api do
-      get 'user', to: 'users#show'
-      post 'user', to: 'users#update'
+      resources :users, only: [ :show, :update ]
       resources :gigs, only: [ :index, :show, :create, :update, :destroy ]
       resources :musicians, only: [ :index, :show, :create, :update, :destroy ]
       resources :gig_musician_memberships, only: [ :create, :update, :destroy ]

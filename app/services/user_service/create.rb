@@ -7,7 +7,7 @@ module UserService
     def run(instrument_id = nil)
       user = false
       User.transaction do
-        user = User.create(@data)
+        user = User.create!(@data)
         if instrument_id
           # TODO: UserService::CreateLinkedMusician
         end
@@ -27,15 +27,9 @@ module UserService
         #   zipcode: user.zipcode,
         #   phone: user.phone
         # )
-        raise ActiveRecord::Rollback if failed?(user, linked_musician)
       end
       user
     end
 
-    private
-
-    def failed?(user, musician)
-      user.errors.count > 0 || musician.errors.count > 0
-    end
   end
 end

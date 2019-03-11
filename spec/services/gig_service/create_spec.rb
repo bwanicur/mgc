@@ -28,13 +28,7 @@ describe GigService::Create do
       expect(gig.musicians.count).to eq(2)
     end
 
-    it "should record errors" do
-      gig_atts.delete(:start_time)
-      gig = described_class.new({gig: gig_atts}).run
-      expect(gig.errors.count > 0).to be_truthy
-      expect(gig.errors.first.first).to eq(:start_time)
-    end
-
+    it "should raise ActiveRecord::RecordInvalid errors"
   end
 
 end

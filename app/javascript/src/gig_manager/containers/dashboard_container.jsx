@@ -25,15 +25,15 @@ class Dashboard extends React.Component {
   render() {
     console.log('DashboardCOmponent render()')
     return (
-      <div className="ui container">
+      <div className="container">
         { this.state.isLoading ? (
           <div>LOADING</div>
         ) : (
-          <div className="ui grid">
-            <div className="five wide column user-data">
+          <div className="">
+            <div className="user-data">
               <AvatarContainer />
             </div>
-            <div className="11 widavae column gig-data">
+            <div className="gig-data">
               USER: { JSON.stringify(this.props.user) }<br />
               GIGS: { JSON.stringify(this.props.gigs) }<br />
               MUSICIANS: { JSON.stringify(this.props.musicians) }

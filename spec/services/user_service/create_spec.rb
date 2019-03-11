@@ -13,10 +13,6 @@ describe UserService::Create do
 
     it "should create a user with an associated linked musician when given an instrument_id"
 
-    it "should record errors" do
-      user_atts.delete(:email)
-      user = described_class.new(user_atts).run(instrument.id)
-      expect(!user.errors.empty?).to be_truthy
-    end
+    it "should raise ActiveRecord::RecordInvalid exceptions"
   end
 end

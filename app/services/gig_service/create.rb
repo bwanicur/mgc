@@ -7,13 +7,11 @@ module GigService
     end
 
     def run
-      gig = false
       Gig.transaction do
-        gig = Gig.create(@gig_data)
+        gig = Gig.create!(@gig_data)
         gig.musicians = @musicians
-        raise ActiveRecord::Rollback if gig.errors.count > 0
+        gig
       end
-      gig
     end
 
   end

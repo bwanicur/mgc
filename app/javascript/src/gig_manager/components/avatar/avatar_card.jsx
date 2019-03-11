@@ -33,8 +33,9 @@ class AvatarCard extends React.Component {
         >
           { image }
           <AvatarForm
-            onUpdateAvatar={this.props.updateAvatar}
+            updateAvatar={this.props.updateAvatar}
             isHovering={this.state.isHovering}
+            avatarImage={this.state.image}
           />
         </div>
         <CardTitle>Full Name</CardTitle>
