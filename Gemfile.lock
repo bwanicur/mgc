@@ -80,10 +80,10 @@ GEM
       dotenv (= 2.7.5)
       railties (>= 3.2, < 6.1)
     erubi (1.9.0)
-    factory_bot (5.1.2)
+    factory_bot (5.2.0)
       activesupport (>= 4.2.0)
-    factory_bot_rails (5.1.1)
-      factory_bot (~> 5.1.0)
+    factory_bot_rails (5.2.0)
+      factory_bot (~> 5.2.0)
       railties (>= 4.2.0)
     faker (2.11.0)
       i18n (>= 1.6, < 2)
@@ -155,7 +155,8 @@ GEM
       ast (~> 2.4.0)
     pg (1.2.3)
     public_suffix (4.0.4)
-    puma (3.12.4)
+    puma (4.3.3)
+      nio4r (~> 2.0)
     rack (2.2.2)
     rack-protection (2.0.8.1)
       rack
@@ -281,8 +282,8 @@ DEPENDENCIES
   kaminari
   letter_opener
   money-rails
-  pg (>= 0.18, < 2.0)
-  puma (~> 3.7)
+  pg
+  puma
   rails (~> 6.0)
   rspec-rails
   rubocop

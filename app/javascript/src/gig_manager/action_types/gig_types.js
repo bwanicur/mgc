@@ -1,2 +1,0 @@
-export const GIG_DATA_SUCCESS = 'GIG_DATA_SUCCESS';
-export const GIG_DATA_FAIL = 'GIG_DATA_FAIL';
