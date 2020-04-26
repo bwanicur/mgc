@@ -6,8 +6,8 @@ git_source(:github) do |repo_name|
 end
 
 gem 'rails', '~> 6.0'
-gem 'pg', '>= 0.18', '< 2.0'
-gem 'puma', '~> 3.7'
+gem 'pg'
+gem 'puma'
 gem 'webpacker'
 gem 'sidekiq'
 
