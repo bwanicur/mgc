@@ -1,3 +1,6 @@
+// TODO: prolly get rid of this and just use the dashboard_container
+
+
 import React from 'react'
 // import { Switch, Route } from 'react-router-dom'
 import DashboardContainer from '../../containers/dashboard_container'

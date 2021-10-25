@@ -1,8 +1,8 @@
 class CreateVenues < ActiveRecord::Migration[5.1]
   def change
     create_table :venues do |t|
+      t.integer :user_id, null: false
       t.string :name, null: false
-      t.boolean :is_confirmed, default: false
       t.string :address1, null: false
       t.string :address2
       t.decimal :latitude
@@ -18,8 +18,6 @@ class CreateVenues < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
-    add_index :venues, :name
-    add_index :venues, :state
-    add_index :venues, :city
+    add_index :venues, :user_id
   end
 end

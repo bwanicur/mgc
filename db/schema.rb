@@ -2,15 +2,15 @@
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
-# Note that this schema.rb definition is the authoritative source for your
-# database schema. If you need to create the application database on another
-# system, you should be using db:schema:load, not running all the migrations
-# from scratch. The latter is a flawed and unsustainable approach (the more migrations
-# you'll amass, the slower it'll run and the greater likelihood for issues).
+# This file is the source Rails uses to define your schema when running `bin/rails
+# db:schema:load`. When creating a new database, `bin/rails db:schema:load` tends to
+# be faster and is potentially less error prone than running all of your
+# migrations from scratch. Old migrations may fail to apply correctly if those
+# migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_04_150432) do
+ActiveRecord::Schema.define(version: 2021_10_25_182251) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,10 +50,10 @@ ActiveRecord::Schema.define(version: 2018_10_04_150432) do
   end
 
   create_table "gigs", force: :cascade do |t|
+    t.integer "region_id", null: false
     t.integer "user_id", null: false
     t.integer "venue_id", null: false
     t.string "priv_hash", null: false
-    t.boolean "is_template", default: false
     t.string "title", null: false
     t.datetime "start_time", null: false
     t.datetime "end_time"
@@ -66,21 +66,12 @@ ActiveRecord::Schema.define(version: 2018_10_04_150432) do
     t.datetime "updated_at", null: false
     t.index ["priv_hash"], name: "index_gigs_on_priv_hash", unique: true
     t.index ["user_id"], name: "index_gigs_on_user_id"
-    t.index ["venue_id"], name: "index_gigs_on_venue_id"
-  end
-
-  create_table "instruments", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_instruments_on_name", unique: true
   end
 
   create_table "musicians", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "linked_user_id"
-    t.integer "instrument_id"
     t.string "email", null: false
+    t.string "instrument"
     t.string "first_name"
     t.string "last_name"
     t.string "address1"
@@ -88,11 +79,10 @@ ActiveRecord::Schema.define(version: 2018_10_04_150432) do
     t.string "city"
     t.string "state"
     t.string "zipcode"
-    t.string "phone", null: false
+    t.string "phone"
     t.jsonb "optional_data", default: {}
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["linked_user_id"], name: "index_musicians_on_linked_user_id"
     t.index ["user_id", "email"], name: "index_musicians_on_user_id_and_email", unique: true
   end
 
@@ -100,24 +90,21 @@ ActiveRecord::Schema.define(version: 2018_10_04_150432) do
     t.integer "gig_musician_membership_id", null: false
     t.integer "amount_cents", default: 0, null: false
     t.string "amount_currency", default: "USD", null: false
-    t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["gig_musician_membership_id"], name: "index_payments_on_gig_musician_membership_id"
   end
 
-  create_table "user_venue_votes", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "venue_id", null: false
-    t.boolean "accurate", default: true
-    t.jsonb "corrections", default: {}
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["venue_id", "user_id"], name: "index_user_venue_votes_on_venue_id_and_user_id", unique: true
+  create_table "regions", force: :cascade do |t|
+    t.string "code", null: false
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
+    t.integer "region_id", null: false
     t.string "email", null: false
     t.string "first_name"
     t.string "last_name"
@@ -144,8 +131,8 @@ ActiveRecord::Schema.define(version: 2018_10_04_150432) do
   end
 
   create_table "venues", force: :cascade do |t|
+    t.integer "user_id", null: false
     t.string "name", null: false
-    t.boolean "is_confirmed", default: false
     t.string "address1", null: false
     t.string "address2"
     t.decimal "latitude"
@@ -160,9 +147,7 @@ ActiveRecord::Schema.define(version: 2018_10_04_150432) do
     t.jsonb "optional_data", default: {}
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["city"], name: "index_venues_on_city"
-    t.index ["name"], name: "index_venues_on_name"
-    t.index ["state"], name: "index_venues_on_state"
+    t.index ["user_id"], name: "index_venues_on_user_id"
   end
 
 end

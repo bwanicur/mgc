@@ -1,7 +1,9 @@
 class Gig < ApplicationRecord
   validates :user_id, :venue_id, :priv_hash, :title, :start_time, presence: true
   validates :priv_hash, uniqueness: true
+
   belongs_to :user
+  belongs_to :region
   belongs_to :venue
 
   has_many :gig_musician_memberships, dependent: :destroy
