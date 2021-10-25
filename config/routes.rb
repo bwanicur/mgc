@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   namespace :backstage, constraints: RouteConstraints::UserHasAuth.new do
     # ReactJS App - GigManager
     get '/', to: 'home#home', as: :root
+
+    # API Endpoints
     namespace :api do
       resources :users, only: [ :show, :update ]
       resources :gigs, only: [ :index, :show, :create, :update, :destroy ]
