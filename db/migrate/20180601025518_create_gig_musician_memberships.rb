@@ -1,4 +1,4 @@
-class CreateGigMusicianMemberships < ActiveRecord::Migration[5.1]
+class CreateGigMusicianMemberships < ActiveRecord::Migration[6.1]
   def up
     create_table :gig_musician_memberships do |t|
       t.integer :gig_id, null: false

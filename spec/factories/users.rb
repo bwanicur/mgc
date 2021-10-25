@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :user do
+    region
     email { Faker::Internet.email }
     password  { 'testing123' }
     password_confirmation { 'testing123' }

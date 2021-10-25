@@ -1,10 +1,10 @@
-class CreateGigs < ActiveRecord::Migration[5.1]
+class CreateGigs < ActiveRecord::Migration[6.1]
   def change
     create_table :gigs do |t|
+      t.integer :region_id, null: false
       t.integer :user_id, null: false
       t.integer :venue_id, null: false
       t.string :priv_hash, null: false
-      t.boolean :is_template, default: false
       t.string :title, null: false
       t.datetime :start_time, null: false
       t.datetime :end_time
@@ -17,7 +17,6 @@ class CreateGigs < ActiveRecord::Migration[5.1]
       t.timestamps
     end
     add_index :gigs, :user_id
-    add_index :gigs, :venue_id
     add_index :gigs, :priv_hash, unique: true
   end
 end

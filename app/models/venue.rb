@@ -2,8 +2,9 @@ class Venue < ApplicationRecord
   validates :name, :address1, :city, :state, :zipcode, presence: true
   validates :state, length: { maximum: 2, minimum: 2 }
 
+  belongs_to :user
+
   has_many :gigs
-  has_many :user_venue_votes
 
   after_validation :geocode, if: -> { address_has_changed? }
   geocoded_by :full_address
