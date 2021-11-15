@@ -4,11 +4,7 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy', as: :logout
   resources :sessions, only: [ :new, :create, :destroy ]
   resources :users, only: [ :new, :create, :show ]
-  resources :gigs, only: [ :index, :show ] do
-    member do
-      get :info
-    end
-  end
+  resources :gigs, only: [ :index, :show ]
   resources :gig_invitations, only: [ :show, :update ]
 
   namespace :backstage, constraints: RouteConstraints::UserHasAuth.new do

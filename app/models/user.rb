@@ -6,6 +6,9 @@ class User < ApplicationRecord
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
 
+  # TODO: validate format --> xxxx-xxx-xxx...
+  # validates :url_name, format: { with: /\A[a-z0-9]+(\-[a-z0-9])+\Z/i }
+
   belongs_to :region
 
   # has_one_attached :avatar

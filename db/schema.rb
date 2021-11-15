@@ -45,8 +45,8 @@ ActiveRecord::Schema.define(version: 2021_10_25_182251) do
     t.integer "email_count", default: 0
     t.integer "sms_count", default: 0
     t.integer "alt_instrument_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "gigs", force: :cascade do |t|
@@ -62,8 +62,8 @@ ActiveRecord::Schema.define(version: 2021_10_25_182251) do
     t.string "map_link"
     t.text "musician_info"
     t.jsonb "optional_data", default: {}
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["priv_hash"], name: "index_gigs_on_priv_hash", unique: true
     t.index ["user_id"], name: "index_gigs_on_user_id"
   end
@@ -81,8 +81,8 @@ ActiveRecord::Schema.define(version: 2021_10_25_182251) do
     t.string "zipcode"
     t.string "phone"
     t.jsonb "optional_data", default: {}
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id", "email"], name: "index_musicians_on_user_id_and_email", unique: true
   end
 
@@ -91,8 +91,8 @@ ActiveRecord::Schema.define(version: 2021_10_25_182251) do
     t.integer "amount_cents", default: 0, null: false
     t.string "amount_currency", default: "USD", null: false
     t.datetime "confirmed_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["gig_musician_membership_id"], name: "index_payments_on_gig_musician_membership_id"
   end
 
@@ -115,6 +115,7 @@ ActiveRecord::Schema.define(version: 2021_10_25_182251) do
     t.string "zipcode"
     t.string "phone"
     t.jsonb "optional_data", default: {}
+    t.datetime "gigs_last_updated_at"
     t.string "crypted_password"
     t.string "salt"
     t.string "activation_state"
@@ -123,8 +124,8 @@ ActiveRecord::Schema.define(version: 2021_10_25_182251) do
     t.string "reset_password_token"
     t.datetime "reset_password_token_expires_at"
     t.datetime "reset_password_email_sent_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["activation_token"], name: "index_users_on_activation_token"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token"
@@ -145,8 +146,8 @@ ActiveRecord::Schema.define(version: 2021_10_25_182251) do
     t.string "email"
     t.string "website"
     t.jsonb "optional_data", default: {}
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_venues_on_user_id"
   end
 

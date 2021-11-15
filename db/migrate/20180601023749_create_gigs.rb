@@ -1,4 +1,4 @@
-class CreateGigs < ActiveRecord::Migration[5.1]
+class CreateGigs < ActiveRecord::Migration[6.1]
   def change
     create_table :gigs do |t|
       t.integer :region_id, null: false
