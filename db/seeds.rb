@@ -4,6 +4,7 @@ region = Region.create!(
 )
 
 user1 = User.create!(
+  url_name: "test-1-user",
   region: region,
   email: "test@test.com",
   first_name: "Test",
@@ -12,14 +13,6 @@ user1 = User.create!(
   password_confirmation: "testing123"
 )
 user1.activate!
-user1_self_musician = Musician.create!(
-  user_id: user1.id,
-  first_name: "Test",
-  last_name: "User - Musician",
-  email: "test@test.com",
-  phone: "111-111-1111",
-  instrument: "bass"
-)
 pianist = Musician.create!(
   email: "pollypiano@test.com",
   user: user1,
@@ -53,7 +46,7 @@ gig1 = Gig.create!(
   title: "Trio Gig",
   start_time: Time.zone.now + 1.week
 )
-gig1.musicians = [user1_self_musician, pianist, drummer]
+gig1.musicians = [pianist, drummer]
 gig2 = Gig.create!(
   region: region,
   user: user1,
@@ -61,4 +54,4 @@ gig2 = Gig.create!(
   title: "Duo Gig",
   start_time: Time.zone.now + 1.week + 1.day
 )
-gig2.musicians = [user1_self_musician, pianist]
+gig2.musicians = [pianist]

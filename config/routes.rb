@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :gigs, only: [ :index, :show ]
   resources :gig_invitations, only: [ :edit, :update ]
 
-  namespace :backstage, constraints: RouteConstraints::UserHasAuth.new do
+  namespace :backstage do
     # ReactJS App - GigManager
     get "/", to: "home#home", as: :root
 

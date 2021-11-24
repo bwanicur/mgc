@@ -14,7 +14,7 @@ describe "Gig Invitations Requests" do
     end
     it "should update the confirmation_status and confirmed_at fields" do
       orig_confirmed_at = gmm.confirmed_at
-      patch root_path + gmm.id.to_s, params: { confirmation_status: "yes" }
+      patch "#{root_path}/#{gmm.confirmation_token}", params: { confirmation_status: "yes" }
       res = JSON.parse(response.body)
       expect(res["confirmation_status"]).to eq("yes")
       expect(res["confirmed_at"]).to_not eq(orig_confirmed_at)

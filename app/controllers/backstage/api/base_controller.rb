@@ -2,6 +2,8 @@ module Backstage
   module API
     class BaseController < ApplicationController
 
+      before_action :require_login
+
       rescue_from ActiveRecord::RecordNotFound do |e|
         render_error(e, 404)
       end
