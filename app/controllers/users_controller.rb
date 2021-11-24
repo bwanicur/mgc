@@ -7,10 +7,4 @@ class UsersController < ApplicationController
 
   def show
   end
-
-  private
-
-  def user_params
-    params.require(:user).permit(*USER_PARAMS)
-  end
 end
