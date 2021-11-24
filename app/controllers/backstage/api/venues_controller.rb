@@ -6,39 +6,32 @@ module Backstage
         begin
           venues = VenueService::Search.new(venue_search_params).run
         rescue VenueService::SearchError => e
-          render json: { sucess: false, errors: e.message }
+          render json: { msg: e.message }, status: 400
           return
         end
-        render json: { success: true, venues: venues.map{|v| hv(v)} }
+        render json: { venues: venues.map { |v| hv(v) } }
       end
 
       def show
         venue = Venue.find(params[:id])
-        render json: { venue: hv(venue) }
+        render json: hv(venue)
       end
 
       def create
-        venue = Venue.new(venue_params)
-        if venue.save
-          render json: { success: true, venue: hv(venue) }
-        else
-          render json: { success: false, errors: venue.errors }
-        end
+        venue = Venue.create!(venue_params.merge(user: current_user))
+        render json: hv(venue)
       end
 
       def update
         venue = Venue.find(params[:id])
-        if venue.update_attributes(venue_params)
-          render json: { success: true, venue: hv(venue) }
-        else
-          render json: { success: false, errors: venue.errors }
-        end
+        venue.update!(venue_params)
+        render json: hv(venue)
       end
 
       def destroy
         venue = Venue.find(params[:id])
-        success = venue.destroy ? true : false
-        render json: { success: success }
+        venue.destroy!
+        head :ok
       end
 
       private

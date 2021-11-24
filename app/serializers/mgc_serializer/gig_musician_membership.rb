@@ -16,9 +16,5 @@ module MGCSerializer
         alt_instrument: @gmm.alt_instrument.try(:name)
       }
     end
-
-    def as_json
-      as_hash.to_json
-    end
   end
 end

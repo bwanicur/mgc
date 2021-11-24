@@ -1,18 +1,12 @@
 module GigService
   class Create
-
-    def initialize(data={})
-      @gig_data = data[:gig]
-      @musicians = data[:musicians] || []
-    end
-
-    def run
+    def self.run!(gig_data)
       Gig.transaction do
-        gig = Gig.create!(@gig_data)
-        gig.musicians = @musicians
+        musicians_data = gig_data.delete("musicians_data") || []
+        gig = Gig.create!(gig_data)
+        AddMusicians.run!(gig, musicians_data)
         gig
       end
     end
-
   end
 end

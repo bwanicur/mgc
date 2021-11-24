@@ -14,9 +14,5 @@ module MGCSerializer
         musicians: @gig.musicians.map { |m| MGCSerializer::Musician.new(m).as_hash }
       }
     end
-
-    def as_json
-      as_hash.to_json
-    end
   end
 end

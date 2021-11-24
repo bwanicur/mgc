@@ -1,10 +1,8 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe "BACKSTAGE: Musicians Requests" do
-
   let(:root_path) { "/backstage/api/musicians" }
   let(:user) { FactoryBot.create(:user) }
-  let(:instrument) { FactoryBot.create(:instrument) }
 
   before(:each) { login_and_activate_user(user) }
 
@@ -14,8 +12,8 @@ describe "BACKSTAGE: Musicians Requests" do
       get root_path
       expect(response).to have_http_status(:success)
       hash = JSON.parse(response.body)
-      expect(hash['musicians']).to be
-      expect(hash['musicians'].size).to eq(1)
+      expect(hash["musicians"]).to be
+      expect(hash["musicians"].size).to eq(1)
     end
   end
 
@@ -24,46 +22,44 @@ describe "BACKSTAGE: Musicians Requests" do
     it "returns JSON for a musician" do
       get "#{root_path}/#{musician.id}"
       expect(response).to have_http_status(:success)
-      hash = JSON.parse(response.body)['musician']
-      expect(hash['id']).to eq(musician.id)
+      hash = JSON.parse(response.body)
+      expect(hash["id"]).to eq(musician.id)
     end
   end
 
   describe "POST create" do
     it "returns success JSON after creating a musician" do
-      atts = { musician: FactoryBot.attributes_for(:musician).merge(instrument_id: instrument.id) }
+      atts = { musician: FactoryBot.attributes_for(:musician) }
       post root_path, params: atts
       expect(response).to have_http_status(:success)
       hash = JSON.parse(response.body)
-      expect(hash['success']).to eq(true)
-      expect(hash['musician']['id']).to be_present
+      expect(hash["id"]).to be_present
     end
 
     it "returns errors on fail" do
-      atts = { musician: FactoryBot.attributes_for(:musician) }
+      atts = { musician: FactoryBot.attributes_for(:musician).merge(email: nil) }
       post root_path, params: atts
       hash = JSON.parse(response.body)
-      expect(hash['success']).to eq(false)
-      expect(hash['errors']).to be_present
+      expect(response.status).to eq(400)
+      expect(hash["msg"]).to match(/^Validation failed/)
     end
   end
 
   describe "PATCH update" do
     let(:musician) { FactoryBot.create(:musician) }
     it "returns success JSON after updating a musician" do
-      patch "#{root_path}/#{musician.id}", params: { musician: { email: 'newemail@test.com' } }
+      patch "#{root_path}/#{musician.id}", params: { musician: { email: "newemail@test.com" } }
       expect(response).to have_http_status(:success)
       hash = JSON.parse(response.body)
-      expect(hash['success']).to eq(true)
-      expect(hash['musician']['email']).to eq('newemail@test.com')
-      expect(hash['musician']['id']).to eq(musician.id)
+      expect(hash["email"]).to eq("newemail@test.com")
+      expect(hash["id"]).to eq(musician.id)
     end
 
     it "returns errors on fail" do
       patch "#{root_path}/#{musician.id}", params: { musician: { email: nil } }
-      hash = JSON.parse(response.body)['errors']
-      expect(hash).to be
-      expect(hash.keys.first).to eq('email')
+      hash = JSON.parse(response.body)
+      expect(response.status).to eq(400)
+      expect(hash["msg"]).to match(/^Validation failed/)
     end
   end
 
@@ -72,11 +68,7 @@ describe "BACKSTAGE: Musicians Requests" do
     it "returns success JSON after deleting a musician" do
       delete "#{root_path}/#{musician.id}"
       expect(response).to have_http_status(:success)
-      hash = JSON.parse(response.body)
-      expect(hash['success']).to eq(true)
-      expect(user.musicians.count).to eq(0)
     end
   end
-
 
 end

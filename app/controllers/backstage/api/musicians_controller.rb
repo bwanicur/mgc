@@ -1,6 +1,6 @@
 module Backstage
-    module API
-    class MusiciansController < ApplicationController
+  module API
+    class MusiciansController < BaseController
       include PersonParams
 
       PER_PAGE = 10
@@ -8,40 +8,31 @@ module Backstage
       def index
         # TODO: replace with search service (order by musician gig memberships count)
         musicians = current_user.musicians
-        if has_paginate_params?
-          musicians = musicians.page(page_param).per(PER_PAGE)
-        end
+        musicians = musicians.page(page_param).per(PER_PAGE) if has_paginate_params?
         render json: { musicians: musicians.map { |m| hm(m) } }
       end
 
       def show
-        musician = Musician.find(params[:id])
-        render json: { musician: hm(musician) }
+        render json: hm(Musician.find(params[:id]))
       end
 
       def create
-        musician = Musician.new(musician_params)
-        musician.user = current_user
-        if musician.save
-          render json: { success: true, musician: hm(musician) }
-        else
-          render json: { success: false, errors: musician.errors }
-        end
+        musician = Musician.create!(
+          musician_params.merge(user: current_user)
+        )
+        render json: hm(musician)
       end
 
       def update
         musician = Musician.find(params[:id])
-        if musician.update_attributes(musician_params)
-          render json: { success: true, musician: hm(musician) }
-        else
-          render json: { success: false, errors: musician.errors }
-        end
+        musician.update!(musician_params)
+        render json: hm(musician)
       end
 
       def destroy
         musician = Musician.find(params[:id])
-        success = musician.destroy ? true : false
-        render json: { success: success }
+        musician.destroy!
+        head :ok
       end
 
       private
@@ -51,7 +42,7 @@ module Backstage
       end
 
       def musician_params
-        params.require(:musician).permit(:id, *PERSON_PARAMS, :instrument_id)
+        params.require(:musician).permit(*PERSON_PARAMS, :instrument)
       end
     end
   end

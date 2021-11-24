@@ -6,8 +6,6 @@ import Musicians from '../musicians/musicians'
 import Venues from '../venues/venues'
 import Settings from '../settings/settings'
 
-import 'bootstrap/dist/css/bootstrap.css'
-import 'font-awesome/css/font-awesome.min.css'
 
 const MainDisplay = () => {
   return (

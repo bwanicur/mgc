@@ -7,8 +7,9 @@ class CreateGigMusicianMemberships < ActiveRecord::Migration[6.1]
       t.datetime :confirmed_at
       t.integer :confirmation_status, default: 0
       t.integer :email_count, default: 0
-      t.integer :sms_count, default: 0
-      t.integer :alt_instrument_id
+      t.monetize :payment_amount
+      t.datetime :payment_confirmed_at
+      t.text :musician_message
       t.timestamps
     end
   end

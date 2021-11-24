@@ -11,7 +11,7 @@ class CreateGigs < ActiveRecord::Migration[6.1]
       t.string :short_description
       t.text :description
       t.string :map_link
-      t.text :musician_info
+      t.text :musician_text
       t.jsonb :optional_data, default: {}
 
       t.timestamps

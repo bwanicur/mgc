@@ -43,8 +43,10 @@ ActiveRecord::Schema.define(version: 2021_10_25_182251) do
     t.datetime "confirmed_at"
     t.integer "confirmation_status", default: 0
     t.integer "email_count", default: 0
-    t.integer "sms_count", default: 0
-    t.integer "alt_instrument_id"
+    t.integer "payment_amount_cents", default: 0, null: false
+    t.string "payment_amount_currency", default: "USD", null: false
+    t.datetime "payment_confirmed_at"
+    t.text "musician_message"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -60,7 +62,7 @@ ActiveRecord::Schema.define(version: 2021_10_25_182251) do
     t.string "short_description"
     t.text "description"
     t.string "map_link"
-    t.text "musician_info"
+    t.text "musician_text"
     t.jsonb "optional_data", default: {}
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -86,16 +88,6 @@ ActiveRecord::Schema.define(version: 2021_10_25_182251) do
     t.index ["user_id", "email"], name: "index_musicians_on_user_id_and_email", unique: true
   end
 
-  create_table "payments", force: :cascade do |t|
-    t.integer "gig_musician_membership_id", null: false
-    t.integer "amount_cents", default: 0, null: false
-    t.string "amount_currency", default: "USD", null: false
-    t.datetime "confirmed_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["gig_musician_membership_id"], name: "index_payments_on_gig_musician_membership_id"
-  end
-
   create_table "regions", force: :cascade do |t|
     t.string "code", null: false
     t.string "name", null: false
@@ -105,6 +97,7 @@ ActiveRecord::Schema.define(version: 2021_10_25_182251) do
 
   create_table "users", force: :cascade do |t|
     t.integer "region_id", null: false
+    t.string "url_name", null: false
     t.string "email", null: false
     t.string "first_name"
     t.string "last_name"
@@ -129,6 +122,7 @@ ActiveRecord::Schema.define(version: 2021_10_25_182251) do
     t.index ["activation_token"], name: "index_users_on_activation_token"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token"
+    t.index ["url_name"], name: "index_users_on_url_name", unique: true
   end
 
   create_table "venues", force: :cascade do |t|

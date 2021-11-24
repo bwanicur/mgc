@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :musician do
     association :user
-    association :instrument, strategy: :build
+    instrument { %w[Horn Bass Drums Keys Vocals Guitar].sample }
     email { Faker::Internet.email }
     first_name { Faker::Name.first_name }
     last_name { Faker::Name.last_name }
@@ -9,6 +9,6 @@ FactoryBot.define do
     city { Faker::Address.city }
     state { Faker::Address.state }
     zipcode { Faker::Address.zip }
-    phone { '111-111-1111' }
+    phone { "111-111-1111" }
   end
 end
