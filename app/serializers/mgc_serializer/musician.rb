@@ -5,7 +5,18 @@ module MGCSerializer
     end
 
     def as_hash
-      MGCSerializer::Person.new(@musician).as_hash
+      @musician.slice(
+        :id,
+        :email,
+        :full_name,
+        :address1,
+        :address2,
+        :city,
+        :state,
+        :zipcode,
+        :phone,
+        :num_gigs
+      )
     end
   end
 end

@@ -4,7 +4,7 @@ module Backstage
       include PersonParams
 
       def index
-        gigs = GigService::Search.new(current_user, gig_search_params).run
+        gigs = GigService::Search.run(current_user, gig_search_params)
         render json: { gigs: gigs.map { |g| hg(g) } }
       end
 

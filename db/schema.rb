@@ -73,9 +73,8 @@ ActiveRecord::Schema.define(version: 2021_10_25_182251) do
   create_table "musicians", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "email", null: false
+    t.string "full_name", null: false
     t.string "instrument"
-    t.string "first_name"
-    t.string "last_name"
     t.string "address1"
     t.string "address2"
     t.string "city"
@@ -99,6 +98,7 @@ ActiveRecord::Schema.define(version: 2021_10_25_182251) do
     t.integer "region_id", null: false
     t.string "url_name", null: false
     t.string "email", null: false
+    t.string "instrument"
     t.string "first_name"
     t.string "last_name"
     t.string "address1"

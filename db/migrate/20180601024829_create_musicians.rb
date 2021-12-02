@@ -3,9 +3,8 @@ class CreateMusicians < ActiveRecord::Migration[6.1]
     create_table :musicians do |t|
       t.integer :user_id, null: false
       t.string :email, null: false
+      t.string :full_name, null: false
       t.string :instrument
-      t.string :first_name
-      t.string :last_name
       t.string :address1
       t.string :address2
       t.string :city
@@ -13,7 +12,7 @@ class CreateMusicians < ActiveRecord::Migration[6.1]
       t.string :zipcode
       t.string :phone
       t.jsonb :optional_data, default: {}
-
+      t.integer :num_gigs, default: 0
       t.timestamps
     end
     add_index :musicians, %i[user_id email], unique: true

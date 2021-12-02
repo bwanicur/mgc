@@ -1,11 +1,10 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 
-import Dashboard from '../dashboard/dashboard'
+import Dashboard from '../dashboard/Dashboard'
 import Musicians from '../musicians/musicians'
 import Venues from '../venues/venues'
 import Settings from '../settings/settings'
-
 
 const MainDisplay = () => {
   return (

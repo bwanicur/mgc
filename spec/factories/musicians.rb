@@ -1,10 +1,9 @@
 FactoryBot.define do
   factory :musician do
     association :user
-    instrument { %w[Horn Bass Drums Keys Vocals Guitar].sample }
     email { Faker::Internet.email }
-    first_name { Faker::Name.first_name }
-    last_name { Faker::Name.last_name }
+    full_name { "#{Faker::Name.first_name} #{Faker::Name.last_name}" }
+    instrument { %w[Horn Bass Drums Keys Vocals Guitar].sample }
     address1 { Faker::Address.street_address }
     city { Faker::Address.city }
     state { Faker::Address.state }

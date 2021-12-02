@@ -8,15 +8,14 @@ Rails.application.routes.draw do
   resources :gig_invitations, only: [ :edit, :update ]
 
   namespace :backstage do
-    # ReactJS App - GigManager
+    # ReactJS App
     get "/", to: "home#home", as: :root
+  end
 
-    # API Endpoints
-    namespace :api do
-      resources :users, only: [ :show, :update ]
-      resources :gigs, only: [ :index, :show, :create, :update, :destroy ]
-      resources :musicians, only: [ :index, :show, :create, :update, :destroy ]
-      resources :venues, only: [ :index, :show, :create, :update, :destroy ]
-    end
+  namespace :api do
+    resources :users, only: [ :show, :update ]
+    resources :gigs, only: [ :index, :show, :create, :update, :destroy ]
+    resources :musicians, only: [ :index, :show, :create, :update, :destroy ]
+    resources :venues, only: [ :index, :show, :create, :update, :destroy ]
   end
 end

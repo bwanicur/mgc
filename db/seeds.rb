@@ -4,11 +4,11 @@ region = Region.create!(
 )
 
 user1 = User.create!(
-  url_name: "test-1-user",
+  url_name: "seed-1-user",
   region: region,
   email: "test@test.com",
-  first_name: "Test",
-  last_name: "User",
+  first_name: "Seed",
+  last_name: "User 1",
   password: "testing123",
   password_confirmation: "testing123"
 )
@@ -16,8 +16,7 @@ user1.activate!
 pianist = Musician.create!(
   email: "pollypiano@test.com",
   user: user1,
-  first_name: "Polly Piano",
-  last_name: "Player",
+  full_name: "Polly Pianst",
   instrument: "piano",
   phone: "111-111-1111"
 )
@@ -25,8 +24,7 @@ user1.musicians << pianist
 drummer = Musician.create!(
   email: "donnydrums@test.com",
   user: user1,
-  first_name: "Donny",
-  last_name: "Drummer",
+  full_name: "Donny DaJewler",
   instrument: "drums",
   phone: "111-111-1111"
 )

@@ -1,0 +1,116 @@
+import React, { useState } from "react"
+import standardHeaders from "../shared/standardHeaders"
+
+const MusicianQuickCreateForm = () => {
+  const [successMsg, setSuccessMsg] = useState(null)
+  const [serverError, setServerError] = useState("")
+  const [submitting, setSubmitting] = useState(false)
+  const [fields, setFields] = useState({
+    email: "",
+    full_name: "",
+    instrument: ""
+  })
+  const [errors, setErrors] = useState({})
+
+  const path = "/api/musicians"
+  const requiredFields = ["email", "full_name"]
+
+  function validateForm() {
+    let valid = true
+    for (const field of requiredFields) {
+      if (fields[field].length < 1) {
+        setErrors(errors => ({...errors, [field]: "is required"}))
+        valid = false
+      }
+    }
+    return valid;
+  }
+
+  function handleChange(e) {
+    setFields(fields => ({...fields, [e.target.name]: e.target.value}))
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault()
+    setSubmitting(true)
+    if(!validateForm()) {
+      setSubmitting(false)
+      return
+    }
+
+    fetch(path, {
+      method: "post",
+      headers: standardHeaders("post"),
+      body: JSON.stringify(fields)
+    })
+    .then((res) => {
+      if (res.ok) {
+        res.json().then(data => {
+          setSuccessMsg(`${data.full_name} has been added to your list of musicians`)
+        })
+      } else {
+        res.json().then(json => setServerError(json.msg))
+      }
+      setSubmitting(false)
+    })
+  }
+
+  const stdClassName = "form-control"
+  const errorClassName = "form-control is-invalid"
+
+  return (
+    <form className="mt-2" onSubmit={handleSubmit}>
+      { successMsg && <div className="alert alert-success">{successMsg}</div> }
+      { serverError && <div className="alert alert-danger">{serverError}</div> }
+      <div className="row">
+        <div className="col-3">
+        <input
+            noValidate
+            onChange={handleChange}
+            value={fields.email}
+            className={errors.email ? errorClassName : stdClassName}
+            name="email"
+            type="email"
+            placeholder="Email"
+            aria-label="Email"
+          />
+          { errors.email && <div className="invalid-feedback">Is Required</div>}
+        </div>
+        <div className="col-3">
+          <input
+            noValidate
+            onChange={handleChange}
+            value={fields.full_name}
+            className={errors.full_name ? errorClassName : stdClassName}
+            name="full_name"
+            type="text"
+            placeholder="Full Name"
+            aria-label="Full Name"
+          />
+          { errors.full_name && <div className="invalid-feedback">Is Required</div>}
+        </div>
+        <div className="col-3">
+          <input
+            noValidate
+            onChange={handleChange}
+            value={fields.instrument}
+            className={stdClassName}
+            name="instrument"
+            type="text"
+            placeholder="Instrument"
+            aria-label="Instrument"
+          />
+        </div>
+        <div className="col-2 pt-1">
+          <button
+            type="submit"
+            disabled={submitting}
+            className="btn btn-sm btn-primary"
+          >Create</button>
+        </div>
+      </div>
+    </form>
+  )
+}
+
+export default MusicianQuickCreateForm
