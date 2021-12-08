@@ -41,7 +41,12 @@ module API
     end
 
     def musician_params
-      params.require(:musician).permit(*PERSON_PARAMS, :instrument)
+      params.require(:musician).permit(
+        :email,
+        :full_name,
+        :phone,
+        :instrument
+      )
     end
   end
 end

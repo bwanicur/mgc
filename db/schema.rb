@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2021_10_25_182251) do
     t.text "description"
     t.string "map_link"
     t.text "musician_text"
+    t.datetime "reminder_at"
     t.jsonb "optional_data", default: {}
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -75,13 +76,9 @@ ActiveRecord::Schema.define(version: 2021_10_25_182251) do
     t.string "email", null: false
     t.string "full_name", null: false
     t.string "instrument"
-    t.string "address1"
-    t.string "address2"
-    t.string "city"
-    t.string "state"
-    t.string "zipcode"
     t.string "phone"
     t.jsonb "optional_data", default: {}
+    t.integer "num_gigs", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id", "email"], name: "index_musicians_on_user_id_and_email", unique: true
@@ -128,20 +125,22 @@ ActiveRecord::Schema.define(version: 2021_10_25_182251) do
   create_table "venues", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "name", null: false
-    t.string "address1", null: false
-    t.string "address2"
-    t.decimal "latitude"
-    t.decimal "longitude"
+    t.string "address", null: false
     t.string "city", null: false
     t.string "state", limit: 2, null: false
     t.string "zipcode", null: false
+    t.decimal "latitude"
+    t.decimal "longitude"
+    t.string "timezone"
     t.text "description"
     t.string "phone"
     t.string "email"
     t.string "website"
+    t.integer "num_gigs", default: 0
     t.jsonb "optional_data", default: {}
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["latitude", "longitude"], name: "index_venues_on_latitude_and_longitude"
     t.index ["user_id"], name: "index_venues_on_user_id"
   end
 

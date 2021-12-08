@@ -32,7 +32,7 @@ user1.musicians << drummer
 venue1 = Venue.create!(
   user: user1,
   name: "Jazz Club",
-  address1: "111 Broadway",
+  address: "111 Broadway",
   city: "San Diego",
   state: "CA",
   zipcode: "92101"

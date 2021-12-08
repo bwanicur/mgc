@@ -45,10 +45,8 @@ module API
 
     def venue_params
       params.require(:venue).permit(
-        :id,
         :name,
-        :address1,
-        :address2,
+        :address,
         :city,
         :state,
         :zipcode,
@@ -57,6 +55,5 @@ module API
         :website
       )
     end
-
   end
 end

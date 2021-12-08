@@ -8,8 +8,8 @@ import VenueQuickCreateForm from "./VenueQuickCreateForm"
 // - table-ish display of next 5 upcoming gigs
 
 function Dashboard() {
-  const [visibleMQC, setVisibleMQC] = useState(true)
-  const [visibleVQC, setVisibleVQC] = useState(false)
+  const [visibleMQC, setVisibleMQC] = useState(false)
+  const [visibleVQC, setVisibleVQC] = useState(true)
 
   return (
     <div className="dashboard">

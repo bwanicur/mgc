@@ -1,4 +1,6 @@
 class Musician < ApplicationRecord
+  include GigCountable
+
   validates :user_id, :email, :full_name, presence: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :user_id, uniqueness: { scope: :email }

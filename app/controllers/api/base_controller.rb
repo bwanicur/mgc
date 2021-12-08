@@ -12,7 +12,7 @@ module API
       ActiveRecord::RecordNotUnique
     ].freeze
     rescue_from *FOUR_00_EXCEPTIONS do |e|
-      render_error(e, 400)
+      render_error(e, 422)
     end
 
     rescue_from ActiveRecord::RecordNotDestroyed do |e|

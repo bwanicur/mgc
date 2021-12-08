@@ -5,11 +5,6 @@ class CreateMusicians < ActiveRecord::Migration[6.1]
       t.string :email, null: false
       t.string :full_name, null: false
       t.string :instrument
-      t.string :address1
-      t.string :address2
-      t.string :city
-      t.string :state
-      t.string :zipcode
       t.string :phone
       t.jsonb :optional_data, default: {}
       t.integer :num_gigs, default: 0

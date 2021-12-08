@@ -1,25 +1,35 @@
 class Venue < ApplicationRecord
-  validates :name, :address1, :city, :state, :zipcode, presence: true
+  include GigCountable
+
+  validates :name, :address, :city, :state, :zipcode, presence: true
   validates :state, length: { maximum: 2, minimum: 2 }
 
   belongs_to :user
 
   has_many :gigs
 
-  after_validation :geocode, if: -> { address_has_changed? }
-  geocoded_by :full_address
+  # TODO
+  # geocoded_by :full_address
+  # after_validation :assign_geocode_atts, if: -> { address_has_changed? }
 
-  ADDRESS_ATTS = [ :address1, :address2, :city, :state, :zipcode ]
+  ADDRESS_ATTS = %i[address city state zipcode].freeze
+
+  private
 
   def address_has_changed?
-    ADDRESS_ATTS.each do |att|
-      return true if send(att.to_s + '_changed?')
-    end
+    ADDRESS_ATTS.each { |att| return true if send("#{att}_changed?") }
+
     false
   end
 
   def full_address
-    ADDRESS_ATTS.map{|att| send(att)}.compact.join(' ')
+    ADDRESS_ATTS.map { |att| send(att) }.compact.join(" ")
   end
 
+  def assign_geocode_atts
+    geocode
+    return unless latitude && longitude
+
+    self.timezone = Timezone.lookup(latitude, longitude) # TODO: call some .to_s method here ?
+  end
 end

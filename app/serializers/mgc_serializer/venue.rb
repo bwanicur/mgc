@@ -8,13 +8,13 @@ module MGCSerializer
       @venue.slice(
         :id,
         :name,
-        :latitude,
-        :longitude,
-        :address1,
-        :address2,
+        :address,
         :city,
         :state,
         :zipcode,
+        :latitude,
+        :longitude,
+        :timezone,
         :phone,
         :email,
         :website

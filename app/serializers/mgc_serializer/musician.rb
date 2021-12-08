@@ -9,11 +9,6 @@ module MGCSerializer
         :id,
         :email,
         :full_name,
-        :address1,
-        :address2,
-        :city,
-        :state,
-        :zipcode,
         :phone,
         :num_gigs
       )

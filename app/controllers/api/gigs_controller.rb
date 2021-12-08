@@ -1,7 +1,6 @@
 module Backstage
   module API
     class GigsController < BaseController
-      include PersonParams
 
       def index
         gigs = GigService::Search.run(current_user, gig_search_params)

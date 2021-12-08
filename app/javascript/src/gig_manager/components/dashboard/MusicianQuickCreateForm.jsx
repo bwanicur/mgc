@@ -2,18 +2,19 @@ import React, { useState } from "react"
 import standardHeaders from "../shared/standardHeaders"
 
 const MusicianQuickCreateForm = () => {
-  const [successMsg, setSuccessMsg] = useState(null)
-  const [serverError, setServerError] = useState("")
-  const [submitting, setSubmitting] = useState(false)
-  const [fields, setFields] = useState({
+  const path = "/api/musicians"
+  const initFields = {
     email: "",
     full_name: "",
     instrument: ""
-  })
-  const [errors, setErrors] = useState({})
-
-  const path = "/api/musicians"
+  }
   const requiredFields = ["email", "full_name"]
+
+  const [successMsg, setSuccessMsg] = useState(null)
+  const [serverError, setServerError] = useState("")
+  const [submitting, setSubmitting] = useState(false)
+  const [fields, setFields] = useState(initFields)
+  const [errors, setErrors] = useState({})
 
   function validateForm() {
     let valid = true
@@ -47,6 +48,7 @@ const MusicianQuickCreateForm = () => {
       if (res.ok) {
         res.json().then(data => {
           setSuccessMsg(`${data.full_name} has been added to your list of musicians`)
+          setFields(initFields)
         })
       } else {
         res.json().then(json => setServerError(json.msg))
