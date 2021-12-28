@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SmsGigInvitationJob < ApplicationJob
   queue_as :default
 

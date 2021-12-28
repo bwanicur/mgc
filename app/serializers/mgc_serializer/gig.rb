@@ -5,14 +5,15 @@ module MGCSerializer
     end
 
     def as_hash
-      {
-        id: @gig.id,
-        title: @gig.title,
-        start_time: @gig.start_time,
-        end_time: @gig.end_time,
-        venue: MGCSerializer::Venue.new(@gig.venue).as_hash,
-        musicians: @gig.musicians.map { |m| MGCSerializer::Musician.new(m).as_hash }
-      }
+      @gig.slice(
+        :id,
+        :title,
+        :date,
+        :start_time,
+        :end_time,
+        :musicians,
+        :description
+      )
     end
   end
 end

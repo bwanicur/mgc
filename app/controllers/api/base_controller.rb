@@ -6,12 +6,13 @@ module API
       render_error(e, 404)
     end
 
-    FOUR_00_EXCEPTIONS = [
+    FOUR_22_EXCEPTIONS = [
       ActiveRecord::RecordInvalid,
       ActiveRecord::RecordNotSaved,
-      ActiveRecord::RecordNotUnique
+      ActiveRecord::RecordNotUnique,
+      ArgumentError
     ].freeze
-    rescue_from *FOUR_00_EXCEPTIONS do |e|
+    rescue_from *FOUR_22_EXCEPTIONS do |e|
       render_error(e, 422)
     end
 

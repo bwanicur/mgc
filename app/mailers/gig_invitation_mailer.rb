@@ -1,10 +1,8 @@
 class GigInvitationMailer < ApplicationMailer
-    include NameHelper
     include DateHelper
     include Rails.application.routes.url_helpers
 
     # for the view templates
-    helper :name
     helper :date
     helper :address
 

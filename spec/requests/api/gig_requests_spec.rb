@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 require "rails_helper"
 
-describe "BACKSTAGE: Gig Requests" do
-
-  let(:root_path) { "/backstage/api/gigs" }
+describe "API: Gig Requests" do
+  let(:root_path) { "/api/gigs" }
   let(:region) { FactoryBot.create(:region) }
   let(:user) { FactoryBot.create(:user) }
   let(:venue) { FactoryBot.create(:venue) }

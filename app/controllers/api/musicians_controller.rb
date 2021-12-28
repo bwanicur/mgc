@@ -1,7 +1,7 @@
+# frozen_string_literal: true
+
 module API
   class MusiciansController < BaseController
-    include PersonParams
-
     PER_PAGE = 10
 
     def index

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module MGCSerializer
   class Venue
     def initialize(venue)
@@ -14,7 +16,6 @@ module MGCSerializer
         :zipcode,
         :latitude,
         :longitude,
-        :timezone,
         :phone,
         :email,
         :website

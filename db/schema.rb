@@ -55,19 +55,21 @@ ActiveRecord::Schema.define(version: 2021_10_25_182251) do
     t.integer "region_id", null: false
     t.integer "user_id", null: false
     t.integer "venue_id", null: false
-    t.string "priv_hash", null: false
     t.string "title", null: false
-    t.datetime "start_time", null: false
-    t.datetime "end_time"
-    t.string "short_description"
+    t.date "date", null: false
+    t.string "start_time", null: false
+    t.datetime "starts_at", null: false
+    t.string "end_time"
     t.text "description"
     t.string "map_link"
     t.text "musician_text"
+    t.integer "hours_before_reminder"
     t.datetime "reminder_at"
     t.jsonb "optional_data", default: {}
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["priv_hash"], name: "index_gigs_on_priv_hash", unique: true
+    t.index ["region_id"], name: "index_gigs_on_region_id"
+    t.index ["reminder_at"], name: "index_gigs_on_reminder_at"
     t.index ["user_id"], name: "index_gigs_on_user_id"
   end
 
@@ -131,7 +133,6 @@ ActiveRecord::Schema.define(version: 2021_10_25_182251) do
     t.string "zipcode", null: false
     t.decimal "latitude"
     t.decimal "longitude"
-    t.string "timezone"
     t.text "description"
     t.string "phone"
     t.string "email"

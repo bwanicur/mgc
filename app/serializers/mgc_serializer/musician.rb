@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module MGCSerializer
   class Musician
     def initialize(musician)

@@ -10,12 +10,13 @@ const MusicianQuickCreateForm = () => {
   }
   const requiredFields = ["email", "full_name"]
 
-  const [successMsg, setSuccessMsg] = useState(null)
+  const [successMsg, setSuccessMsg] = useState("")
   const [serverError, setServerError] = useState("")
   const [submitting, setSubmitting] = useState(false)
   const [fields, setFields] = useState(initFields)
   const [errors, setErrors] = useState({})
 
+  // TODO: validate email --> simplpe regex --> /\S+@\S+\.\S+/
   function validateForm() {
     let valid = true
     for (const field of requiredFields) {
@@ -31,9 +32,16 @@ const MusicianQuickCreateForm = () => {
     setFields(fields => ({...fields, [e.target.name]: e.target.value}))
   }
 
+  function resetErrors(){
+    setErrors({})
+    setServerError("")
+  }
+
   function handleSubmit(e) {
     e.preventDefault()
     setSubmitting(true)
+    setSuccessMsg("")
+    resetErrors()
     if(!validateForm()) {
       setSubmitting(false)
       return
@@ -48,6 +56,7 @@ const MusicianQuickCreateForm = () => {
       if (res.ok) {
         res.json().then(data => {
           setSuccessMsg(`${data.full_name} has been added to your list of musicians`)
+          resetErrors()
           setFields(initFields)
         })
       } else {

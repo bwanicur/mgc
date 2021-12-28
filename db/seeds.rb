@@ -42,7 +42,8 @@ gig1 = Gig.create!(
   user: user1,
   venue: venue1,
   title: "Trio Gig",
-  start_time: Time.zone.now + 1.week
+  date: Date.today + 1.week,
+  start_time: "7 pm"
 )
 gig1.musicians = [pianist, drummer]
 gig2 = Gig.create!(
@@ -50,6 +51,7 @@ gig2 = Gig.create!(
   user: user1,
   venue: venue1,
   title: "Duo Gig",
-  start_time: Time.zone.now + 1.week + 1.day
+  date: Date.today + 1.week + 1.day,
+  start_time: "7pm"
 )
 gig2.musicians = [pianist]

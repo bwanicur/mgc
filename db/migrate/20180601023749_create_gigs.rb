@@ -4,20 +4,22 @@ class CreateGigs < ActiveRecord::Migration[6.1]
       t.integer :region_id, null: false
       t.integer :user_id, null: false
       t.integer :venue_id, null: false
-      t.string :priv_hash, null: false
       t.string :title, null: false
-      t.datetime :start_time, null: false
-      t.datetime :end_time
-      t.string :short_description
+      t.date :date, null: false
+      t.string :start_time, null: false
+      t.datetime :starts_at, null: false
+      t.string :end_time
       t.text :description
       t.string :map_link
       t.text :musician_text
+      t.integer :hours_before_reminder
       t.datetime :reminder_at
       t.jsonb :optional_data, default: {}
-
       t.timestamps
+
+      t.index :region_id
+      t.index :user_id
+      t.index :reminder_at
     end
-    add_index :gigs, :user_id
-    add_index :gigs, :priv_hash, unique: true
   end
 end

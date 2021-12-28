@@ -3,8 +3,9 @@ FactoryBot.define do
     region
     user
     venue
-    sequence(:title) {|n| "Test Gig #{n}" }
-    start_time { Time.zone.now.beginning_of_hour }
-    end_time { Time.zone.now.beginning_of_hour + 3.hours }
+    sequence(:title) { |n| "Test Gig #{n}" }
+    date { Date.today + 5.days }
+    start_time { "7 pm" }
+    end_time { "10 pm" }
   end
 end

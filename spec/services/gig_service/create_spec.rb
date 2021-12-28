@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe GigService::Create do
 
@@ -11,10 +11,9 @@ describe GigService::Create do
     atts
   end
 
-  describe '#run' do
-
+  describe "#run" do
     it "should create gig data" do
-      gig = described_class.new({gig: gig_atts}).run
+      gig = described_class.new(gig_atts).run
       expect(gig).to be_truthy
     end
 

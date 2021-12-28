@@ -1,0 +1,8 @@
+/* Create Gig Form */
+textarea[name="description"] {
+  height: 5rem;
+}
+
+.react-date-picker__wrapper {
+  border: none;
+}

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module API
   class UsersController < BaseController
     def show
@@ -8,7 +10,7 @@ module API
 
     def update
     end
-    
+
     private
 
     def user_params

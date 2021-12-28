@@ -4,7 +4,7 @@
     <%= form_tag sessions_path, class: "ui form" do %>
       <div class="field">
         <%= label_tag :email, 'Email' %>
-        <%= text_field_tag :email, params[:email], placeholder: "Email" %>
+        <%= text_field_tag :email, params[:email], placeholder: "Email", autofocus: true %>
       </div>
       <div class="field">
         <%= label_tag :password, 'Password' %>

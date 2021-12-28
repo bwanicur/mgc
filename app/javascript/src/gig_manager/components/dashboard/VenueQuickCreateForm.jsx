@@ -31,9 +31,16 @@ const VenueQuickCreateForm = () => {
     return valid;
   }
 
+  function resetErrors() {
+    setErrors({})
+    setServerError("")
+  }
+
   function handleSubmit(e) {
     e.preventDefault()
     setSubmitting(true)
+    setSuccessMsg("")
+    resetErrors()
     if(!validateForm()) {
       setSubmitting(false)
       return
@@ -47,7 +54,9 @@ const VenueQuickCreateForm = () => {
     .then((res) => {
       if (res.ok) {
         res.json().then(data => {
+          // TODO: replace with timed message
           setSuccessMsg(`${data.name} has been added to your list of venues`)
+          resetErrors()
           setFields(initFields)
         })
       } else {

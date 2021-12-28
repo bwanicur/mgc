@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module MGCSerializer
   class User
     # include Rails.application.routes.url_helpers

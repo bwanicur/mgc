@@ -15,7 +15,6 @@ gem "puma"
 gem "rails", "~> 6.1"
 gem "sidekiq"
 gem "sorcery"
-gem "timezone"
 gem "twilio-ruby"
 gem "webpacker"
 

@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require "rails_helper"
 
-describe "BACKSTAGE::API: Users Requests" do
+describe "API: Users Requests" do
   let(:user) { FactoryBot.create(:user) }
-  let(:root_path) { "/backstage/api/users/" }
+  let(:root_path) { "/api/users/" }
 
   before(:each) { login_and_activate_user(user) }
 

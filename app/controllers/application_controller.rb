@@ -3,6 +3,11 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def find_region_id
+    # TODO: get from URL or other - TBD...
+    "socal" # TEMP
+  end
+
   def has_paginate_params?
     params[:page].present?
   end

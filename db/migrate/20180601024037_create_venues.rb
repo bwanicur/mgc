@@ -9,7 +9,6 @@ class CreateVenues < ActiveRecord::Migration[6.1]
       t.string :zipcode, null: false
       t.decimal :latitude
       t.decimal :longitude
-      t.string :timezone
       t.text :description
       t.string :phone
       t.string :email

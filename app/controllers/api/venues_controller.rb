@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 module API
   class VenuesController < BaseController
-
     def index
       begin
         venues = VenueService::Search.new(venue_search_params).run

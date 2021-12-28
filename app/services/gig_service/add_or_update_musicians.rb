@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GigService
   class AddOrUpdateMusicians
     def self.run!(gig, musicians_data = [])
@@ -7,11 +9,13 @@ module GigService
         )
         gmm.payment_amount_cents = data["payment_amount"].try(:to_money)
         gmm.musician_message = data["musician_message"]
-        gmm.save!
-        gmm.musician.increment_gig_count!
+        gmm.transaction do
+          gmm.save!
+          gmm.musician.increment_gig_count!
+        end
       end
 
-      new_musician_ids = musicians_data.map { |m| m["id"] }
+      new_musician_ids = musicians_data.map { |m| m["id"].to_i }
       (new_musician_ids - gig.musician_ids).each do |musician_id|
         # TODO: send invite (new musician added to gig)
       end

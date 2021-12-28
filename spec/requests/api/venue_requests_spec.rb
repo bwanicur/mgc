@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require "rails_helper"
 
-describe "BACKSTAGE: Venue Requests" do
-  let(:root_path) { "/backstage/api/venues" }
+describe "API: Venue Requests" do
+  let(:root_path) { "/api/venues" }
   let(:user) { FactoryBot.create(:user) }
 
   before(:each) { login_and_activate_user(user) }
